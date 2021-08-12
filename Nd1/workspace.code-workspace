@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\IsMotiejaus"
+		},
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\08-Namu-darbas"
+		},
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\09-Registracija"
+		},
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\09-XD-6var"
+		},
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\Geimas"
+		},
+		{
+			"path": "..\\..\\Naujas"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\var6"
+		},
+		{
+			"path": "..\\..\\..\\..\\Projektai mano\\Html+Css+Js"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Naujas",
+		"px-to-rem.px-per-rem": 17
+	}
+}
