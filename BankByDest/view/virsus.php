@@ -21,18 +21,17 @@
             margin: 0 auto;
         }
 
-        div,
-        h2 {
+        div, h2 {
             margin: 5px;
             padding: 7px;
             border: 1px solid rgb(92, 92, 92);
-            font-size: 12px;
+            font-size: 18px;
         }
 
         label {
             display: inline-block;
             width: 140px;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 700;
             text-align: center;
         }
@@ -65,7 +64,7 @@
             text-decoration: none;
             color: white;
             font-weight: 400;
-            background-color: lightblue;
+            /* background-color: lightblue; */
             border-radius: 6px;
             border: none;
             /* background-color: rgb(83, 95, 107); */
@@ -74,10 +73,20 @@
             box-shadow: 5px 5px 5px rgb(64, 76, 90);
         }
 
+        /* form {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        } */
+
         .klientas {
-            margin: 5px;
+            width: 80%;
+            margin-top: 5px;
             padding: 7px;
             border: 2px solid black;
+            box-shadow: 10px 10px 10px rgb(64, 76, 90);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .klientas h1 {
@@ -87,11 +96,47 @@
         }
 
         .btnCreate {
-            font-size: 16px;
+            font-size: 20px;
             padding: 5px;
             margin-left: 50%;
             transform: translateX(-50%);
         }
+
+        button.btnNav:hover {
+            cursor: pointer;
+            background-color: rgb(78, 93, 110);
+        }
+
+        .secBtn {
+            margin-left: 5px;
+            background-color:rgb(184, 121, 110);
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 3px;
+            box-shadow: 5px 5px 5px rgb(64, 76, 90);
+            font-size: 14px;
+            color: rgb(59, 16, 3);
+            font-weight: 600;
+        }
+
+        .neimas {
+            display: inline-flex;
+            width: 40%;
+            justify-content: center;
+        }
+
+        .NoMargin {
+            margin: 0;
+            padding: 0;
+            border: transparent;
+            display: flex;
+        }
+
+        .dataFLD-inact {
+            width: 70%;
+        }
+
     </style>
 </head>
 
@@ -103,4 +148,6 @@
 
         <!-- <a href="<?= URL ?>?route=nauja">Nauja sąskaita</a> -->
         <button onclick="location.href= '<?= URL ?>?route=nauja'" class="btnNav">Nauja sąskaita</button>
+
+        <button onclick="location.href= '<?= URL ?>'" class="btnNav">Gryzti i sarasa</button>
     </nav>

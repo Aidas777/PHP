@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php require __DIR__ . "/virsus.php" ?>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +19,7 @@
         margin: 0 auto;
     }
 
-    div, h2 {
+    .div, h2 {
         margin: 5px;
         padding: 7px;
         border: 1px solid rgb(92, 92, 92);
@@ -26,16 +27,25 @@
     }
 
     label {
-        display: inline-block;
+        /* display: inline-block; */
         width: 140px;
         font-size: 20px;
         font-weight: 700;
         text-align: center;
+        margin-right: 10%;
     }
+
+    /* .inLbl {
+        margin-right: 10%;
+    } */
     nav {
+        width: 84%;
+        display: flex;
         background: gray;
-        margin: 30px 5px;
+        align-self: center;
+        margin: 20px auto 10px auto;
         padding: 5px;
+        justify-content: flex-end;
     }
     nav a {
         display: inline-block;
@@ -52,8 +62,9 @@
     .btnCreate {
         font-size: 16px;
         padding: 5px;
-        margin-left: 50%;
-        transform: translateX(-50%);
+        /* margin-left: 50%; */
+        /* transform: translateX(-50%); */
+        margin-right: 10%;
     }
 
     form {
@@ -68,45 +79,58 @@
         font-size: 16px;
     }
 
+    .centr {
+        display: flex;
+        justify-content: center;
+    }
+
+    .noBorder {
+        border: none;
+    }
+
     </style>
-</head>
+</head> -->
 
 <body>
 
-<nav>
+    <!-- <nav>
     <a href="<?= URL ?>">Sąrašas</a>
     <a href="<?= URL ?>?route=nauja">Nauja sąskaita</a>
     <button onclick="location.href= '<?= URL ?>'" class="btnCreate">Gryzti i sarasa</button>
-</nav>
+</nav> -->
 
-<form action="<?= URL ?>?route=nauja" method="post">
     <div>
-        <button type="submit" class="btnCreate">Sukurti naują sąskaitą</button>
-    </div>
-</form>
+        <form action="" method="post">
+            <div class="centr div">
+                <label class="inLbl">Vardas</label>
+                <input class="inBox" type="text" name="vardas">
+            </div>
 
-<form action="" method="post">
-    <div>
-        <label class="inLbl">Vardas</label>
-        <input class="inBox" type="text" name="vardas">
-    </div>
+            <div class="centr div">
+                <label class="inLbl ">Pavarde</label>
+                <input class="inBox" type="text" name="pavarde">
+            </div>
 
-    <div class="nextIn">
-        <label class="inLbl">Pavarde</label>
-        <input class="inBox" type="text" name="pavarde">
-    </div>
+            <div class="centr div">
+                <label class="inLbl">Asmens kodas</label>
+                <input class="inBox" type="text" name="ak">
+            </div>
 
-    <div class="nextIn">
-        <label class="inLbl">Sąskaitos Nr.</label>
-        <input class="inBox" type="text" name="sNr">
-    </div>
+            <div class="centr div">
+                <label class="inLbl">Sąskaitos Nr.</label>
+                <input class="inBox" type="text" name="sNr">
+            </div>
 
-    <div class="nextIn">
-        <label class="inLbl">Asmens kodas</label>
-        <input class="inBox" type="text" name="ak">
-    </div>
+        </form>
+        <br>
 
-</form>
+        <form class="noBorder" action="<?= URL ?>?route=nauja" method="post">
+            <p>
+                <button type="submit" class="btnCreate btnNav">Sukurti naują sąskaitą</button>
+            </p>
+        </form>
+    </div>
 
 </body>
+
 </html>
