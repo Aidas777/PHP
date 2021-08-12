@@ -1,32 +1,32 @@
 <?php
-function getSask() : array
+function getSask(): array
 {
-    if (!file_exists(__DIR__.'/saskaitos.json')) {
+    if (!file_exists(__DIR__ . '/saskaitos.json')) {
         $saskaitos = [];
         $saskaitos = json_encode($saskaitos);
-        file_put_contents(__DIR__.'/saskaitos.json', $saskaitos);
+        file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
     }
-    return json_decode(file_get_contents(__DIR__.'/saskaitos.json'), 1);
+    return json_decode(file_get_contents(__DIR__ . '/saskaitos.json'), 1);
 }
 
-function setSask(array $saskaitos) : void
+function setSask(array $saskaitos): void
 {
     $saskaitos = json_encode($saskaitos);
-    file_put_contents(__DIR__.'/saskaitos.json', $saskaitos);
+    file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
 }
 
-function setNauja() : void
+function setNauja(): void
 {
-    $saskaitos = json_decode(file_get_contents(__DIR__.'/saskaitos.json'), 1);
+    $saskaitos = json_decode(file_get_contents(__DIR__ . '/saskaitos.json'), 1);
     // $sNr = "LT127044000" .date("ymd") .(date("H")+3) .date("i");
     $sNr = SukurtiSnr();
-    echo $sNr ." - Sask.Nr.simboliu sk.: " .strlen($sNr);
+    echo $sNr . " - Sask.Nr.simboliu sk.: " . strlen($sNr);
     // $nr = rand(1000000000, 9999999999); // netikras unikalus skaicius
     // $nauja = ["juodieji" => 0, "rudieji" => 0, "SaskNr" => $sNr];
     $nauja = ["juodieji" => 0, "rudieji" => 0, "SaskNr" => $sNr];
     $saskaitos[] = $nauja;
     $saskaitos = json_encode($saskaitos);
-    file_put_contents(__DIR__.'/saskaitos.json', $saskaitos);
+    file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
 }
 
 function router()
@@ -34,29 +34,21 @@ function router()
     $route = $_GET['route'] ?? '';
     if ('GET' == $_SERVER['REQUEST_METHOD'] && '' == $route) {
         pirmasPuslapis();
-    }
-    elseif ('GET' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
+    } elseif ('GET' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
         rodytiNaujaPuslapi();
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
         sukurtiNaujaUžtvanka();
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'naikinti' == $route && isset($_GET["id"])) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'naikinti' == $route && isset($_GET["id"])) {
         NaikintiSask($_GET['id']);
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-juodus' == $route && isset($_GET["id"])) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-juodus' == $route && isset($_GET["id"])) {
         pridetiJuodus($_GET["id"]);
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-juodus' == $route && isset($_GET["id"])) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-juodus' == $route && isset($_GET["id"])) {
         atimtiJuodus($_GET["id"]);
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-rudus' == $route && isset($_GET["id"])) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-rudus' == $route && isset($_GET["id"])) {
         pridetiRudus($_GET["id"]);
-    }
-    elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-rudus' == $route && isset($_GET["id"])) {
+    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-rudus' == $route && isset($_GET["id"])) {
         atimtiRudus($_GET["id"]);
-    }
-    else {
+    } else {
         echo 'Bliaxa muxa Page not found 404';
         die;
     }
@@ -73,7 +65,7 @@ function pridetiJuodus(String $id)
         }
     }
     setSask($saskaitos);
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
 function atimtiJuodus(String $id)
 {
@@ -85,7 +77,7 @@ function atimtiJuodus(String $id)
         }
     }
     setSask($saskaitos);
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
 function pridetiRudus(String $id)
 {
@@ -97,7 +89,7 @@ function pridetiRudus(String $id)
         }
     }
     setSask($saskaitos);
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
 function atimtiRudus(String $id)
 {
@@ -109,7 +101,7 @@ function atimtiRudus(String $id)
         }
     }
     setSask($saskaitos);
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
 
 function pirmasPuslapis()
@@ -123,22 +115,23 @@ function rodytiNaujaPuslapi()
     require __DIR__ . '/view/naujaSask.php';
 }
 
-function SukurtiSnr() {
+function SukurtiSnr()
+{
     $saskaitos = getSask();
     $kartojas = true;
     while ($kartojas == true) {
-        
-        $sGalas=rand(10000000, 99999999);
-        $snr = "LT1270440000" .$sGalas;
+
+        $sGalas = rand(10000000, 99999999);
+        $snr = "LT1270440000" . $sGalas;
 
         $kartojas = false;
-        $count=0;
+        $count = 0;
         foreach ($saskaitos as $index => $saskaita) {
             $count++;
-            if (  $saskaita["SaskNr"] ==  $snr ) {
+            if ($saskaita["SaskNr"] ==  $snr) {
                 $kartojas = true;
                 break;
-            } 
+            }
             if ($count > $sGalas) {
                 echo '<script>alert("SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.")</script>';
                 exit;
@@ -146,23 +139,24 @@ function SukurtiSnr() {
         }
     }
     return $snr;
-   
-//     exit;
-//     // $sGalas=rand(0, 99999999);
-//     // $sGalas=rand(0, 10);
-//     // $snr = "LT1270440000" .$sGalas;
-//    do {
-//         // $sGalas=rand(0, 99999999);
-//         $sGalas=rand(0, 10);
-//         $snr = "LT1270440000" .$sGalas;
-//     } while ($saskaitos["SaskNr"] == $snr );
-//     return $snr;
+
+    //     exit;
+    //     // $sGalas=rand(0, 99999999);
+    //     // $sGalas=rand(0, 10);
+    //     // $snr = "LT1270440000" .$sGalas;
+    //    do {
+    //         // $sGalas=rand(0, 99999999);
+    //         $sGalas=rand(0, 10);
+    //         $snr = "LT1270440000" .$sGalas;
+    //     } while ($saskaitos["SaskNr"] == $snr );
+    //     return $snr;
+
 }
 
 function sukurtiNaujaUžtvanka()
 {
     setNauja();
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
 
 function NaikintiSask(String $id)
@@ -175,7 +169,5 @@ function NaikintiSask(String $id)
         }
     }
     setSask($saskaitos);
-    header('Location: '.URL);
+    header('Location: ' . URL);
 }
-
-
