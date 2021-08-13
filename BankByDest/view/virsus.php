@@ -21,7 +21,8 @@
             margin: 0 auto;
         }
 
-        div, h2 {
+        div,
+        h2 {
             margin: 5px;
             padding: 7px;
             border: 1px solid rgb(92, 92, 92);
@@ -43,6 +44,7 @@
             margin: 30px 5px;
             padding: 5px;
             box-shadow: 5px 5px 5px rgb(64, 76, 90);
+            /* position: fixed; */
         }
 
         nav a {
@@ -52,6 +54,10 @@
             text-decoration: none;
             color: black;
         }
+
+        /* .nav-area {
+            position: fixed;
+        } */
 
         .btnNav {
             /* display: inline-block; */
@@ -90,7 +96,10 @@
         }
 
         .klientas h1 {
-            margin: 5px;
+            margin-top: 5px;
+            margin-right: 5px;
+            margin-left: 5px;
+            margin-bottom: 0;
             padding: 7px;
             font-size: 22px;
         }
@@ -109,11 +118,11 @@
 
         .secBtn {
             margin-left: 5px;
-            background-color:rgb(184, 121, 110);
+            background-color: rgb(184, 121, 110);
             padding: 5px;
             border-radius: 5px;
             border: none;
-            margin-bottom: 3px;
+            margin-bottom: 7px;
             box-shadow: 5px 5px 5px rgb(64, 76, 90);
             font-size: 14px;
             color: rgb(59, 16, 3);
@@ -123,6 +132,12 @@
         .neimas {
             display: inline-flex;
             width: 40%;
+            justify-content: center;
+        }
+
+        .neimas-eur {
+            display: inline-flex;
+            width: 30%;
             justify-content: center;
         }
 
@@ -137,10 +152,40 @@
             width: 70%;
         }
 
+        .dataFLD-inact-eur {
+            width: 30%;
+            text-align: center;
+            background-color: lightsteelblue;
+        }
+
+        .centr {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sNrBig {
+            margin-bottom: 0;
+        }
+
+        .noBorder {
+            border: none;
+            margin-top: 20px;
+        }
+
+        .inBox {
+            width: 40%;
+            font-size: 16px;
+        }
+
+        .inBoxSask {
+            font-size: 28px;
+        }
+
     </style>
 </head>
 
 <body>
+
     <nav>
         <!-- <a href="<?= URL ?>">Sąrašas</a> -->
         <button onclick="location.href= '<?= URL ?>'" class="btnNav">Sąrašas</button>

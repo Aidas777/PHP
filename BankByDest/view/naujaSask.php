@@ -1,4 +1,8 @@
-<?php require __DIR__ . "/virsus.php" ?>
+<?php
+require __DIR__ . "/virsus.php";
+// include_once __DIR__.'/functions.php';
+// include_once __DIR__.'/functions.php';
+?>
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,10 +104,17 @@
 </nav> -->
 
     <div>
-        <form action="" method="post">
+
+        <form action="<?= URL ?>?route=nauja" method="post">
+
+            <div class="centr div">
+                <label class="inLbl">Sąskaitos Nr.</label>
+                <input class="inBoxSask" type="text" name="sNr" value="<?= $sNr ?>"><?= chunk_split($sNr, 4) ?></input>
+            </div>
+
             <div class="centr div">
                 <label class="inLbl">Vardas</label>
-                <input class="inBox" type="text" name="vardas">
+                <input class="inBox" type="text" name="vardas" value="<?= is_null(getVardas()) ? null : getVardas(); ?>">
             </div>
 
             <div class="centr div">
@@ -116,18 +127,10 @@
                 <input class="inBox" type="text" name="ak">
             </div>
 
-            <div class="centr div">
-                <label class="inLbl">Sąskaitos Nr.</label>
-                <input class="inBox" type="text" name="sNr">
+            <div class="noBorder">
+                <button type="submit" class="btnCreate btnNav">Sukurti naują sąskaitą</button>
             </div>
 
-        </form>
-        <br>
-
-        <form class="noBorder" action="<?= URL ?>?route=nauja" method="post">
-            <p>
-                <button type="submit" class="btnCreate btnNav">Sukurti naują sąskaitą</button>
-            </p>
         </form>
     </div>
 

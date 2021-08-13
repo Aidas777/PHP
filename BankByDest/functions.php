@@ -15,18 +15,36 @@ function setSask(array $saskaitos): void
     file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
 }
 
-function setNauja(): void
+function setNauja()
 {
     $saskaitos = json_decode(file_get_contents(__DIR__ . '/saskaitos.json'), 1);
     // $sNr = "LT127044000" .date("ymd") .(date("H")+3) .date("i");
-    $sNr = SukurtiSnr();
-    echo $sNr . " - Sask.Nr.simboliu sk.: " . strlen($sNr);
+    
+    $sNr = $_POST["sNr"];
+    $ak = AkPatikra( (int)$_POST["ak"] );
+    $vard= varduPatikra($_POST["vardas"]);
+    $pavard=varduPatikra($_POST["pavarde"]);
+
     // $nr = rand(1000000000, 9999999999); // netikras unikalus skaicius
     // $nauja = ["juodieji" => 0, "rudieji" => 0, "SaskNr" => $sNr];
-    $nauja = ["juodieji" => 0, "rudieji" => 0, "SaskNr" => $sNr];
-    $saskaitos[] = $nauja;
-    $saskaitos = json_encode($saskaitos);
-    file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
+    if ($sNr and $ak and $vard and $pavard) {
+        $nauja = [
+            "vardas" => $vard, "pavarde" => $pavard,
+            "ak" => $ak, "SaskNr" => $sNr, "Likutis" => 0];
+            
+        $saskaitos[] = $nauja;
+        $saskaitos = json_encode($saskaitos);
+        file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
+        return true;
+
+    } else {
+        $msg="Kazkas negerai su duomenimis ! Patikrinkite." .json_encode($sNr) 
+        ." // ak: " .json_encode($ak) ." // vard: " .json_encode($vard) ." // pavard: " .json_encode($pavard);
+
+        Rodyk($msg);
+        addMsg($msg, "danger");
+        return false;
+    }
 }
 
 function router()
@@ -37,7 +55,7 @@ function router()
     } elseif ('GET' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
         rodytiNaujaPuslapi();
     } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'nauja' == $route) {
-        sukurtiNaujaUžtvanka();
+        sukurtiNaujaSaskaita();
     } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'naikinti' == $route && isset($_GET["id"])) {
         NaikintiSask($_GET['id']);
     } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-juodus' == $route && isset($_GET["id"])) {
@@ -112,7 +130,14 @@ function pirmasPuslapis()
 
 function rodytiNaujaPuslapi()
 {
+    $sNr = SukurtiSnr();
     require __DIR__ . '/view/naujaSask.php';
+}
+
+//ASM KODO, VARDU PATIKRA IR SASK.NR SUDARYMAS
+
+function varduPatikra($names) {
+    return $names;
 }
 
 function SukurtiSnr()
@@ -133,8 +158,10 @@ function SukurtiSnr()
                 break;
             }
             if ($count > $sGalas) {
-                echo '<script>alert("SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.")</script>';
-                exit;
+                $msg="SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.";
+                Rodyk($msg);
+                addMsg($msg, "danger");
+                return false;
             }
         }
     }
@@ -153,10 +180,67 @@ function SukurtiSnr()
 
 }
 
-function sukurtiNaujaUžtvanka()
+function AkPatikra($ak) {
+
+    if (  empty($ak) or $ak=="" or is_null($ak)  ) {
+        addMsg("Nurodykite asmens koda !", "danger");
+        return false;
+    }
+
+
+    if (   (strval($ak))[0] != 3 and (strval($ak))[0] != "4"  ) {
+        $msg="Asmens kodo pradzia neteisinga ! Pakreguokite.";
+        Rodyk($msg);
+        addMsg($msg, "danger");
+        return false;
+    } 
+ 
+    // if (strlen($ak) != 11) {
+    //     $msg="Asmens kodas pertrumpas ar perilgas ! Pakreguokite.";
+    //     Rodyk($msg);
+    //     addMsg($msg, "danger");
+    //     return false;
+    // }
+
+    if ( ! is_numeric($ak) ) {
+        addMsg("Asmens kodas turi buti tik is skaiciu ! Pakreguokite.", "danger");
+        return false;
+    }
+
+    $saskaitos = getSask();
+
+    foreach ($saskaitos as $index => $saskaita) {
+        // addMsg($ak, "blia");
+        // if (isset($saskaita["ak"])) {
+        //     Rodyk("ak is Saskaitu: " .$saskaita["ak"] ." /// ak ivestas dabar: " .$ak);
+        // }
+
+        if ($ak == $saskaita["ak"]) {
+            $msg="Toks asm.kodas ".$ak ." jau yra !";
+            Rodyk($msg);
+            addMsg($msg, "danger");
+            return false;
+        }
+    }
+    return $ak;
+}
+
+function sukurtiNaujaSaskaita()
 {
-    setNauja();
-    header('Location: ' . URL);
+    // Rodyk( json_encode(setNauja()) );
+    // exit;
+    if (setNauja() == true) {
+        header('Location: ' .URL);
+        die;
+    } else {
+        // $ReSNr = "0001";
+        // $ReAk = $_POST["ak"];
+        // $ReVard= $_POST["vardas"];
+        // $RePavard=$_POST["pavarde"];
+
+        header("Location: http://localhost/PHP/BankByDest/Bankas.php?route=nauja");
+        die;
+    }
 }
 
 function NaikintiSask(String $id)
@@ -170,4 +254,20 @@ function NaikintiSask(String $id)
     }
     setSask($saskaitos);
     header('Location: ' . URL);
+}
+
+function addMsg(string $msgTxt, string $msgTyp)
+{
+    $_SESSION["msg"][] = ["msg" => $msgTxt, "msgTyp" => $msgTyp];
+}
+
+function Rodyk(string $pranes) {
+ echo "<script>alert(' $pranes ')</script>";
+//  echo '<script>alert("SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.")</script>';
+}
+
+function getVardas() {
+    // return isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
+    echo isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
+    // exit;
 }

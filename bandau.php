@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
 <?php
 
 $mas= ["123456SNR" => (["Opa"=> 1, "Meduoliai"=> 3])];
@@ -44,6 +55,23 @@ echo $str ."<br>";
 echo substr($str,0,4) ." " .substr($str,4,8)."<br>";
 echo chunk_split($str,4);
 
+echo "<hr>";
+echo "<hr>";
+
+$ak=47703071551;
+
+// if ($ak[0] != 3 or $ak[0] != 4) {
+   var_dump($ak[0]);
+// }
 
 
 ?>
+
+<form action="" method="post">
+    <input type="text" name="Blet" id="1">
+
+<button type="submit">Spausk</button>
+</form>
+
+</body>
+</html>
