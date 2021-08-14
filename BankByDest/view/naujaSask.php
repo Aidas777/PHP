@@ -103,28 +103,32 @@ require __DIR__ . "/virsus.php";
     <button onclick="location.href= '<?= URL ?>'" class="btnCreate">Gryzti i sarasa</button>
 </nav> -->
 
-    <div>
+    <div class="divNBig">
 
         <form action="<?= URL ?>?route=nauja" method="post">
 
-            <div class="centr div">
+            <div class="centr divN">
                 <label class="inLbl">Sąskaitos Nr.</label>
-                <input class="inBoxSask" type="text" name="sNr" value="<?= $sNr ?>"><?= chunk_split($sNr, 4) ?></input>
+
+                <input class="inBoxSask" type="hidden" name="sNr" value="<?= $sNr ?>">
+                <h3 class="sNrShow"><?= chunk_split($sNr, 4) ?></h3></input>
+                
             </div>
 
-            <div class="centr div">
+            <div class="centr divN">
                 <label class="inLbl">Vardas</label>
-                <input class="inBox" type="text" name="vardas" value="<?= is_null(getVardas()) ? null : getVardas(); ?>">
+                <input class="inBox" type="text" name="vardas" value="<?= ReData("vard")["ReVard"] ?? null; ?>">
+                <!-- <input class="inBox" type="text" name="vardas" value="<?= $ReVard ?? null; ?>"> -->
             </div>
 
-            <div class="centr div">
+            <div class="centr divN">
                 <label class="inLbl ">Pavarde</label>
-                <input class="inBox" type="text" name="pavarde">
+                <input class="inBox" type="text" name="pavarde" value="<?= ReData("pavard")["RePavard"] ?? null; ?>">
             </div>
 
-            <div class="centr div">
+            <div class="centr divN">
                 <label class="inLbl">Asmens kodas</label>
-                <input class="inBox" type="text" name="ak">
+                <input class="inBox" type="text" name="ak" value="<?= ReData("ak")["ReAk"] ?? null; ?>">
             </div>
 
             <div class="noBorder">

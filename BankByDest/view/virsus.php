@@ -29,6 +29,18 @@
             font-size: 18px;
         }
 
+        .divNBig {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divN {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         label {
             display: inline-block;
             width: 140px;
@@ -41,7 +53,9 @@
             /* background: gray; */
             /* background: lightslategray; */
             background-color: rgb(137, 165, 192);
-            margin: 30px 5px;
+            margin: 10px 5px;
+
+            /* margin-top: 10px; */
             padding: 5px;
             box-shadow: 5px 5px 5px rgb(64, 76, 90);
             /* position: fixed; */
@@ -80,7 +94,7 @@
         }
 
         /* form {
-            width: 80%;
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
         } */
@@ -172,13 +186,32 @@
             margin-top: 20px;
         }
 
+        .inLbl {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
         .inBox {
             width: 40%;
             font-size: 16px;
         }
 
-        .inBoxSask {
-            font-size: 28px;
+        .sNrShow {
+            font-size: 22px !important;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .msg {
+            font-size: 22px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 3px;
+            color: <?= $_SESSION["msg"]["msgTyp"] ?? "black" ?>;
+            background-color: <?= "lightgrey"; ?>;
+            border-radius: 7px;
         }
 
     </style>
@@ -196,3 +229,8 @@
 
         <button onclick="location.href= '<?= URL ?>'" class="btnNav">Gryzti i sarasa</button>
     </nav>
+
+    <?php
+    RodykMsg();
+    // require_once __DIR__ ."/msg.php";
+    ?>

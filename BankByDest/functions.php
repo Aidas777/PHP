@@ -21,7 +21,7 @@ function setNauja()
     // $sNr = "LT127044000" .date("ymd") .(date("H")+3) .date("i");
     
     $sNr = $_POST["sNr"];
-    $ak = AkPatikra( (int)$_POST["ak"] );
+    $ak = AkPatikra( $_POST["ak"] );
     $vard= varduPatikra($_POST["vardas"]);
     $pavard=varduPatikra($_POST["pavarde"]);
 
@@ -35,14 +35,17 @@ function setNauja()
         $saskaitos[] = $nauja;
         $saskaitos = json_encode($saskaitos);
         file_put_contents(__DIR__ . '/saskaitos.json', $saskaitos);
+        $msg="Saskaita SEKMINGAI sukurta !";
+        addMsg($msg, GREENC);
+
         return true;
 
     } else {
-        $msg="Kazkas negerai su duomenimis ! Patikrinkite." .json_encode($sNr) 
-        ." // ak: " .json_encode($ak) ." // vard: " .json_encode($vard) ." // pavard: " .json_encode($pavard);
+        // $msg="Kazkas negerai su duomenimis ! Patikrinkite." .json_encode($sNr) 
+        // ." // ak: " .json_encode($ak) ." // vard: " .json_encode($vard) ." // pavard: " .json_encode($pavard);
 
-        Rodyk($msg);
-        addMsg($msg, "danger");
+        // Rodyk($msg);
+        // addMsg($msg, REDC);
         return false;
     }
 }
@@ -160,7 +163,7 @@ function SukurtiSnr()
             if ($count > $sGalas) {
                 $msg="SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.";
                 Rodyk($msg);
-                addMsg($msg, "danger");
+                addMsg($msg, REDC);
                 return false;
             }
         }
@@ -183,7 +186,7 @@ function SukurtiSnr()
 function AkPatikra($ak) {
 
     if (  empty($ak) or $ak=="" or is_null($ak)  ) {
-        addMsg("Nurodykite asmens koda !", "danger");
+        addMsg("Nurodykite asmens koda !", REDC);
         return false;
     }
 
@@ -191,19 +194,19 @@ function AkPatikra($ak) {
     if (   (strval($ak))[0] != 3 and (strval($ak))[0] != "4"  ) {
         $msg="Asmens kodo pradzia neteisinga ! Pakreguokite.";
         Rodyk($msg);
-        addMsg($msg, "danger");
+        addMsg($msg, REDC);
         return false;
     } 
  
-    // if (strlen($ak) != 11) {
-    //     $msg="Asmens kodas pertrumpas ar perilgas ! Pakreguokite.";
-    //     Rodyk($msg);
-    //     addMsg($msg, "danger");
-    //     return false;
-    // }
+    if (strlen($ak) != 11) {
+        $msg="Asmens kodas pertrumpas ar perilgas ! Pakreguokite.";
+        Rodyk($msg);
+        addMsg($msg, REDC);
+        return false;
+    }
 
     if ( ! is_numeric($ak) ) {
-        addMsg("Asmens kodas turi buti tik is skaiciu ! Pakreguokite.", "danger");
+        addMsg("Asmens kodas turi buti tik is skaiciu ! Pakreguokite.", REDC);
         return false;
     }
 
@@ -218,7 +221,7 @@ function AkPatikra($ak) {
         if ($ak == $saskaita["ak"]) {
             $msg="Toks asm.kodas ".$ak ." jau yra !";
             Rodyk($msg);
-            addMsg($msg, "danger");
+            addMsg($msg, REDC);
             return false;
         }
     }
@@ -233,10 +236,11 @@ function sukurtiNaujaSaskaita()
         header('Location: ' .URL);
         die;
     } else {
-        // $ReSNr = "0001";
-        // $ReAk = $_POST["ak"];
-        // $ReVard= $_POST["vardas"];
-        // $RePavard=$_POST["pavarde"];
+        $ReSNr = "0001";
+        $ReAk = $_POST["ak"];
+        $ReVard= $_POST["vardas"];
+        $RePavard=$_POST["pavarde"];
+        $_SESSION["ReData"] = ["ReSNr" => $ReSNr, "ReAk"=>$ReAk, "ReVard"=> $ReVard, "RePavard"=>$RePavard];
 
         header("Location: http://localhost/PHP/BankByDest/Bankas.php?route=nauja");
         die;
@@ -258,7 +262,7 @@ function NaikintiSask(String $id)
 
 function addMsg(string $msgTxt, string $msgTyp)
 {
-    $_SESSION["msg"][] = ["msg" => $msgTxt, "msgTyp" => $msgTyp];
+    $_SESSION["msg"] = ["msg" => $msgTxt, "msgTyp" => $msgTyp];
 }
 
 function Rodyk(string $pranes) {
@@ -266,8 +270,46 @@ function Rodyk(string $pranes) {
 //  echo '<script>alert("SASKAITU NUMEIRIAI BAIGESI !!! REIKIA DIDESNIO SKAITMENU FORMATO.")</script>';
 }
 
-function getVardas() {
-    // return isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
-    echo isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
-    // exit;
+// function getVardas() {
+//     // return isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
+//     return isset($_POST["vardas"]) ? $_POST["vardas"] : "nieko nesetinta";
+//     // exit;
+// }
+
+function ReData($tip) {
+    if (  ! empty($_SESSION["ReData"])  ) {
+        $ReDATA=$_SESSION["ReData"];
+        if ($tip == "vard") {
+            // $ReDuom= $ReDATA["ReVard"];
+            $_SESSION["ReData"]["ReVard"]=null;
+        } elseif ($tip == "pavard") {
+            // $ReDuom= $ReDATA["RePavard"];
+            $_SESSION["ReData"]["RePavard"]=null;
+        }elseif ($tip == "ak"){
+            // $ReDuom= $ReDATA["ReAk"];
+            $_SESSION["ReData"]["ReAk"]=null;
+        }
+
+        if ($_SESSION["ReData"]["ReVard"]==null and  $_SESSION["ReData"]["RePavard"]==null and
+        $_SESSION["ReData"]["ReAk"]==null) {
+            $_SESSION["ReData"]=[];
+        }
+        return $ReDATA;
+    }
+    return null;
+    // $_SESSION["ReData"] = ["ReSNr" => $ReSNr, "ReAk"=>$ReAk, "ReVard"=> $ReVard, "RePavard"=>$RePavard];
 }
+
+function RodykMsg() {
+    $message = $_SESSION["msg"] ?? "";
+
+    // if ($message["msgTyp"]==REDC) {
+    //     $_SESSION["bl"]=["taip"=>"yep"];
+
+    // }
+
+    // $_SESSION["msg"]=[];
+    require __DIR__ ."/view/msg.php";
+}
+
+
