@@ -69,6 +69,17 @@
             color: black;
         }
 
+        .secNav {
+            display: flex;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 2px;
+            padding-bottom: 10px;
+            /* border-radius: 15px; */
+            /* border-color: sienna; */
+            border: none;
+        }
+
         /* .nav-area {
             position: fixed;
         } */
@@ -136,11 +147,19 @@
             padding: 5px;
             border-radius: 5px;
             border: none;
-            margin-bottom: 7px;
+            margin-top: 3px;
+            margin-bottom: 3px;
             box-shadow: 5px 5px 5px rgb(64, 76, 90);
             font-size: 14px;
             color: rgb(59, 16, 3);
             font-weight: 600;
+        }
+
+        .secNavLeftBtns {
+            width: 60%;
+            display: flex;
+            margin: 0;
+            padding: 0;
         }
 
         .neimas {
@@ -175,6 +194,7 @@
         .centr {
             display: flex;
             justify-content: center;
+            
         }
 
         .sNrBig {
@@ -210,7 +230,7 @@
             margin-bottom: 15px;
             padding: 3px;
             color: <?= $_SESSION["msg"]["msgTyp"] ?? "black" ?>;
-            background-color: <?= "lightgrey"; ?>;
+            background-color: <?= MsgBackC(); ?>;
             border-radius: 7px;
         }
 

@@ -303,13 +303,20 @@ function ReData($tip) {
 function RodykMsg() {
     $message = $_SESSION["msg"] ?? "";
 
-    // if ($message["msgTyp"]==REDC) {
-    //     $_SESSION["bl"]=["taip"=>"yep"];
-
-    // }
-
-    // $_SESSION["msg"]=[];
+    $_SESSION["msg"]=[];
     require __DIR__ ."/view/msg.php";
+}
+
+function MsgBackC() {
+
+    if (REDC == $_SESSION["msg"]["msgTyp"] ?? "") {
+        // BACK FONAS RAUDONAS
+        $backC=REDB;
+    } else {
+        // BACK FONAS ZALIAS
+        $backC=GREENB;
+    }
+    return $backC;
 }
 
 

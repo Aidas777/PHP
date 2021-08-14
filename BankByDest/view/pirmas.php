@@ -5,9 +5,22 @@
     <!-- <h3><?= $saskaita["SaskNr"] . " Simboliu sk.: " . strlen($saskaita['SaskNr']) ?></h3> -->
     <div class="klientas">
         <h1>Sąskaita Nr. <?= chunk_split($saskaita['SaskNr'], 4) ?></h1>
-        <form class="sNrBig" action="<?= URL ?>?route=naikinti&id=<?= $saskaita['SaskNr'] ?>" method="post">
-            <button type="submit" class="secBtn">Naikinti sąskaitą</button>
-        </form>
+
+        <div class="secNav">
+            <div class=secNavLeftBtns>
+                <form class="sNrBig" action="<?= URL ?>?route=prideti&id=<?= $saskaita['SaskNr'] ?>" method="post">
+                    <button type="submit" class="secBtn">Pridėti lėšų</button>
+                </form>
+
+                <form class="sNrBig" action="<?= URL ?>?route=nuskaiciuoti&id=<?= $saskaita['SaskNr'] ?>" method="post">
+                    <button type="submit" class="secBtn">Nuskaičiuoti lėšas</button>
+                </form>
+            </div>
+
+            <form class="sNrBig" action="<?= URL ?>?route=naikinti&id=<?= $saskaita['SaskNr'] ?>" method="post">
+                <button type="submit" class="secBtn">Naikinti sąskaitą</button>
+            </form>
+        </div>
 
         <div class="NoMargin">
             <h2 class="neimas">Vardas</h2>
