@@ -9,11 +9,11 @@
         <div class="secNav">
             <div class=secNavLeftBtns>
                 <form class="sNrBig" action="<?= URL ?>?route=prideti&id=<?= $saskaita['SaskNr'] ?>" method="post">
-                    <button type="submit" class="secBtn">Pridėti lėšų</button>
+                    <button type="submit" class="secBtn btnLL">Pridėti lėšų</button>
                 </form>
 
-                <form class="sNrBig" action="<?= URL ?>?route=nuskaiciuoti&id=<?= $saskaita['SaskNr'] ?>" method="post">
-                    <button type="submit" class="secBtn">Nuskaičiuoti lėšas</button>
+                <form class="sNrBig" action="<?= URL ?>?route=atimti&id=<?= $saskaita['SaskNr'] ?>" method="post">
+                    <button type="submit" class="secBtn btnLR">Nuskaičiuoti lėšas</button>
                 </form>
             </div>
 

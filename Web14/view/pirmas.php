@@ -12,6 +12,7 @@
 </form>
 <h2>Juodieji: <?= $bebras['juodieji'] ?></h2>
 <h2>Rudieji: <?= $bebras['rudieji'] ?></h2>
+
 <form class="m-2" action="<?= URL ?>?route=prideti-juodus&id=<?= $bebras['id'] ?>" method="post">
     <div class="form-bebrai">
         <label>Pridėti juodus: </label><input type="text" name="j_plus">

@@ -33,12 +33,38 @@
             width: 70%;
             margin-left: auto;
             margin-right: auto;
+            background-color: rgb(220, 216, 238);
+        }
+
+        .divBigPlus {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            /* background-color: rgb(159, 233, 130); */
+            background-color: rgb(223, 247, 199);
+        }
+
+        .divBigPlus h1, .divBigMinus h1 {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .divBigMinus {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(247, 209, 203);
         }
 
         .divN {
             width: 95%;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .divSmallPlus {
+            display: flex;
+            justify-content: space-around;
         }
 
         label {
@@ -49,11 +75,21 @@
             text-align: center;
         }
 
+        .nav-fixed {
+            margin: 0;
+            padding: 0;
+            border: none;
+            position: fixed;
+        }
+
         nav {
+            /* position: fixed; */
+            /* width: 60%; */
             /* background: gray; */
             /* background: lightslategray; */
             background-color: rgb(137, 165, 192);
             margin: 10px 5px;
+            /* margin-top: 0; */
 
             /* margin-top: 10px; */
             padding: 5px;
@@ -78,6 +114,7 @@
             /* border-radius: 15px; */
             /* border-color: sienna; */
             border: none;
+            justify-content: space-between;
         }
 
         /* .nav-area {
@@ -89,6 +126,27 @@
             margin: 4px;
             padding-top: 5px;
             padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            /* background-color: lightblue; */
+            border-radius: 6px;
+            border: none;
+            /* background-color: rgb(83, 95, 107); */
+            /* background-color: rgb(78, 93, 110); */
+            background-color: rgb(105, 127, 148);
+            box-shadow: 5px 5px 5px rgb(64, 76, 90);
+        }
+
+        .btnNavPlus {
+            margin: 5px;
+            margin-left: 7px;
+
+            padding-top: 0;
+            padding-bottom: 0;
             padding-left: 10px;
             padding-right: 10px;
             font-size: 18px;
@@ -118,6 +176,8 @@
             box-shadow: 10px 10px 10px rgb(64, 76, 90);
             margin-left: auto;
             margin-right: auto;
+            /* background-color: rgb(205, 228, 255); */
+            background-color: rgb(223, 235, 250);
         }
 
         .klientas h1 {
@@ -143,7 +203,8 @@
 
         .secBtn {
             margin-left: 5px;
-            background-color: rgb(184, 121, 110);
+            /* background-color: rgb(184, 121, 110); */
+            background-color: rgb(255, 169, 154);
             padding: 5px;
             border-radius: 5px;
             border: none;
@@ -155,11 +216,23 @@
             font-weight: 600;
         }
 
+        .btnLL {
+            background-color: rgb(215, 248, 165);
+            color: darkolivegreen;
+        }
+
+        .btnLR {
+            background-color: rgb(148, 175, 231);
+            color: midnightblue;
+            margin-left: 10px;
+        }
+
         .secNavLeftBtns {
             width: 60%;
             display: flex;
             margin: 0;
             padding: 0;
+            border: none;
         }
 
         .neimas {
@@ -171,6 +244,13 @@
         .neimas-eur {
             display: inline-flex;
             width: 30%;
+            justify-content: center;
+        }
+
+        .neimas-eur-plus {
+            display: inline-flex;
+            width: 25%;
+            font-size: 18px;
             justify-content: center;
         }
 
@@ -188,13 +268,35 @@
         .dataFLD-inact-eur {
             width: 30%;
             text-align: center;
-            background-color: lightsteelblue;
+            background-color: rgb(237, 255, 195);
+        }
+
+        .dataFLD-inact-eur-plus {
+            width: 15%;
+            text-align: center;
+            /* color: rgb(89, 161, 6); */
+            color: grey;
+            background-color: rgb(236, 255, 218);
+            border: none;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .dataFLD-inact-eur-minus {
+            width: 15%;
+            text-align: center;
+            /* color: rgb(89, 161, 6); */
+            color: grey;
+            background-color: rgb(250, 236, 234);
+            border: none;
+            font-size: 20px;
+            font-weight: 400;
         }
 
         .centr {
             display: flex;
             justify-content: center;
-            
+
         }
 
         .sNrBig {
@@ -211,15 +313,36 @@
             margin-bottom: auto;
         }
 
+        .inLblPlus {
+            width: 40%;
+        }
+
         .inBox {
             width: 40%;
             font-size: 16px;
+        }
+
+        .inBoxPlus {
+            width: 20%;
+            font-size: 20px;
+            /* font-weight: 600; */
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: rgb(74, 52, 173);
         }
 
         .sNrShow {
             font-size: 22px !important;
             margin-top: auto;
             margin-bottom: auto;
+        }
+
+        .namePlus {
+            width: 40%;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         .msg {
@@ -234,23 +357,37 @@
             border-radius: 7px;
         }
 
+        .saskSk {
+            display: inline-flex;
+            float: right;
+            margin-right: 5px;
+            padding-bottom: 5px;
+            /* margin-bottom: 4px; */
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <!-- <a href="<?= URL ?>">Sąrašas</a> -->
-        <button onclick="location.href= '<?= URL ?>'" class="btnNav">Sąrašas</button>
-        <!-- <button onclick="location.href= '<?= URL ?>'" class="btn btn-primary">Sąrašas</button> -->
+    <!-- <div class="nav-fixed"> -->
+        <nav>
+            <!-- <a href="<?= URL ?>">Sąrašas</a> -->
+            <button onclick="location.href= '<?= URL ?>'" class="btnNav">Sąrašas</button>
+            <!-- <button onclick="location.href= '<?= URL ?>'" class="btn btn-primary">Sąrašas</button> -->
 
-        <!-- <a href="<?= URL ?>?route=nauja">Nauja sąskaita</a> -->
-        <button onclick="location.href= '<?= URL ?>?route=nauja'" class="btnNav">Nauja sąskaita</button>
+            <?php if ("nauja" != ($_GET["route"] ?? "") ) : ?>
+            <!-- <a href="<?= URL ?>?route=nauja">Nauja sąskaita</a> -->
+            <button onclick="location.href= '<?= URL ?>?route=nauja'" class="btnNav">Nauja sąskaita</button>
 
-        <button onclick="location.href= '<?= URL ?>'" class="btnNav">Gryzti i sarasa</button>
-    </nav>
+            <!-- <button onclick="location.href= '<?= URL ?>'" class="btnNav">Gryzti i sarasa</button> -->
+            <?php echo "<p class='saskSk'>Šiuo metu sąskaitų yra: " .count($saskaitos) ."</p>" ?>
+            <?php endif; ?>
+            
+        </nav>
 
-    <?php
-    RodykMsg();
-    // require_once __DIR__ ."/msg.php";
-    ?>
+        <?php
+        RodykMsg();
+        // require_once __DIR__ ."/msg.php";
+        ?>
+    <!-- </div> -->

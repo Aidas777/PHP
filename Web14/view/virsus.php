@@ -92,4 +92,4 @@
     <?php endif ?>
 </nav>
 
-<?php showMessages() ?>
+<?php //showMessages() ?>
