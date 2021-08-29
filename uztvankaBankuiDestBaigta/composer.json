@@ -1,0 +1,15 @@
+{
+    "name": "puole/uztvanka",
+    "description": "Puiki bebr\u0000 u\u0000tvank\u0000 valdymo sistema",
+    "type": "no",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bebru\\Uztvanka\\": "app/",
+            "Bebru\\Uztvanka\\Login\\": "app/login/",
+            "Bebru\\Uztvanka\\Controllers\\": "app/controllers/",
+            "App\\DB\\": "app/"
+        }
+    }
+}

@@ -73,5 +73,17 @@ $ak=47703071551;
 <button type="submit">Spausk</button>
 </form>
 
+<?php
+echo "<hr>";
+echo "<hr>";
+
+$mass=(["Obuolys" =>"9Gan", "Kriause"=>2, "Kaktusas"=>5]);
+
+foreach ($mass as $index => $value) {
+   echo $value;
+}
+
+?>
+
 </body>
 </html>

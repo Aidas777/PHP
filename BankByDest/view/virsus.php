@@ -365,6 +365,10 @@
             /* margin-bottom: 4px; */
             margin-top: 10px;
         }
+
+        .container {
+            width: 80%;
+        }
     </style>
 </head>
 

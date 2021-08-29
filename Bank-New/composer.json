@@ -1,0 +1,16 @@
+{
+    "name": "aidas7/bank-new",
+    "description": "Puikus Bankas Mano antras su OOP",
+    "type": "n",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pinigu\\Bankas\\": "app/",
+            "Pinigu\\Bankas\\Login\\": "app/Login/",
+            "Pinigu\\Bankas\\Controller\\" : "app/Controllers/",
+            "App\\DB\\" : "app/"
+        }
+    }
+}
+ 

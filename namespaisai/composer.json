@@ -1,0 +1,11 @@
+{
+    "name": "aidas7/namespaisai",
+    "description": "bla ble",
+    "license": "blet",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "veiksmas\\": "bereik/"
+        }
+    }
+}

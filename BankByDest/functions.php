@@ -27,7 +27,7 @@ function setNauja()
 
     // $nr = rand(1000000000, 9999999999); // netikras unikalus skaicius
     // $nauja = ["juodieji" => 0, "rudieji" => 0, "SaskNr" => $sNr];
-    if ($sNr and $ak and $vard and $pavard) {
+     if ($sNr and $ak and $vard and $pavard) {
         $nauja = [
             "vardas" => $vard, "pavarde" => $pavard,
             "ak" => $ak, "SaskNr" => $sNr, "Likutis" => 0
@@ -64,14 +64,14 @@ function router()
     } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'naikinti' == $route && isset($_GET["id"])) {
         NaikintiSask($_GET['id']);
         // DEST PRIDEJIMAI - ATEMIMAI
-    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-juodus' == $route && isset($_GET["id"])) {
-        pridetiJuodus($_GET["id"]);
-    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-juodus' == $route && isset($_GET["id"])) {
-        atimtiJuodus($_GET["id"]);
-    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-rudus' == $route && isset($_GET["id"])) {
-        pridetiRudus($_GET["id"]);
-    } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-rudus' == $route && isset($_GET["id"])) {
-        atimtiRudus($_GET["id"]);
+    // } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-juodus' == $route && isset($_GET["id"])) {
+    //     pridetiJuodus($_GET["id"]);
+    // } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-juodus' == $route && isset($_GET["id"])) {
+    //     atimtiJuodus($_GET["id"]);
+    // } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'prideti-rudus' == $route && isset($_GET["id"])) {
+    //     pridetiRudus($_GET["id"]);
+    // } elseif ('POST' == $_SERVER['REQUEST_METHOD'] && 'atimti-rudus' == $route && isset($_GET["id"])) {
+    //     atimtiRudus($_GET["id"]);
         // MANO LITANIJA
     } elseif ("POST" == $_SERVER["REQUEST_METHOD"] and "prideti" == $route and isset($_GET["id"]) and isset($_POST["plus"])) {
         EurPlus($_GET["id"]);

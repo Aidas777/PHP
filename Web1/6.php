@@ -50,12 +50,14 @@ if ($metod=="POST") {
 <!-- GET -->
 <div class="ties">
     <form id="ge" action="" method="get" name="getas">
+        <input type="text" name="Geto neimas" id="Geto id">
         <button type="submit">Get metodas</button>
     </form>
 
 
     <!-- POST -->
     <form id="po" action="" method="post" name="postas">
+        <input type="text" name="Posto neimas" id="Posto id">
         <button type="submit">Post metodas</button>
     </form>
 </div>

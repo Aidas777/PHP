@@ -8,12 +8,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Bebrų Užtvanka</title>
     <style>
-    /* div, h2 {
-        margin: 5px;
-        padding: 7px;
-        border: 1px solid #ccc;
-        font-size: 12px;
-    } */
+
     label {
         display: inline-block;
         width: 140px;
