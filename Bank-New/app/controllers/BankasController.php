@@ -215,10 +215,25 @@ class BankasController
             App::addMsg($msg, GREENF);
             
         } elseif ($action == 'minus') {
-            $actionAccData['Likutis'] -=$actionValue;
 
-            $msg = "Lėšos SEKMINGAI nuskaičiuotos !";
-            App::addMsg($msg, GREENF);
+            if ($actionAccData['Likutis']>$actionValue) {
+                $actionAccData['Likutis'] -=$actionValue;
+
+                $msg = "Lėšos SEKMINGAI nuskaičiuotos !";
+                App::addMsg($msg, GREENF);
+            } else {
+                $msg = "Tiek babkių nėra ! Nurodykite mažesnę sumą.";
+                App::addMsg($msg, REDF);
+
+                if (isset($_POST['plus'])) {
+                    $page = 'plusEur';
+                }elseif (isset($_POST['minus'])) {
+                    $page = 'minusEur';
+                }
+
+                $this->openActionPage($page, substr($actionAcc,2));
+                return;
+            }
         }
 
         $this->get()->update(substr($actionAcc,2), $actionAccData);
@@ -238,9 +253,20 @@ class BankasController
     }
 
     public function delete($actionAcc) {
-        $this->get()->delete($actionAcc);
-        $msg = "Sąskaita SEKMINGAI panaikinta !";
-        App::addMsg($msg, GREENF);
-        App::redirect('list');
+        $chekLikutis=$this->get()->show($actionAcc);
+        $chekLikutis = $chekLikutis['Likutis'];
+        
+        // var_dump($chekLikutis);die;
+
+        if ($chekLikutis <= 0) {
+            $this->get()->delete($actionAcc);
+            $msg = "Sąskaita SEKMINGAI panaikinta !";
+            App::addMsg($msg, GREENF);
+            App::redirect('list');
+        } else {
+            $msg = "Sąskaitoje yra like babkių ! Panaikinti negalima.";
+            App::addMsg($msg, REDF);
+            App::redirect('list');
+        }
     }
 }

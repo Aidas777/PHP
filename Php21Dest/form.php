@@ -30,7 +30,7 @@ if (isset($_POST['new'])) {
     ";
     
     $pdo->query($sql);
-    header('Location: http://localhost/Lape/21/form.php');
+    header('Location: http://localhost/php/Php21/form.php');
     exit;
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST['del'])) {
     ";
 
     $pdo->query($sql);
-    header('Location: http://localhost/Lape/21/form.php');
+    header('Location: http://localhost/php/Php21/form.php');
     exit;
 }
 
@@ -89,7 +89,7 @@ if (isset($_POST['del'])) {
 
 $sql = "SELECT id, `name`, height, `type`
 FROM medziai
-WHERE `type` <> 2
+-- WHERE `type` <> 2
 ORDER BY height
 LIMIT 10
 ";

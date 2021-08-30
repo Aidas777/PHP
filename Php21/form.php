@@ -39,11 +39,16 @@ if (isset($_POST['del'])) {
 
     $id=$_POST['id'];
 
-    $sql = "DELETE FROM medziai
-    WHERE id=$id
+    $sql = "DELETE FROM ?
+    -- WHERE id=$id
+    WHERE id = ?
     ";
 
-    $pdo->query($sql);
+    // $pdo->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute('medziai', [$id]);
+
+
     header('Location: http://localhost/php/Php21/form.php');
     exit;
 }
@@ -115,7 +120,7 @@ echo '<ul>';
 while ($row = $stmt->fetch())
 {
     // echo "<li>" .var_dump($row) ."</li>"."<br><br><br>";
-    echo '<li><b>ID:' .$row['id'] . '</b> '.$row['name'] . ' '.$row['height'] . ' metrai ' .['Lapuotis', 'Spygliuotis', 'Krumas'][$row['type']-1] . '</li>';
+    echo '<li><b>ID:' .$row['id'] . '</b> '.$row['name'] . ' '.$row['height'] . ' metrai ' .['Lapuotis', 'Spygliuotis', 'Palmee'][$row['type']-1] . '</li>';
 }
 echo '</ul>';
 

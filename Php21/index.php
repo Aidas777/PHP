@@ -67,6 +67,6 @@ echo '<ul>';
 while ($row = $stmt->fetch())
 {
     // echo "<li>" .var_dump($row) ."</li>"."<br><br><br>";
-    echo '<li><b>ID:' .$row['id'] . '</b> '.$row['name'] . ' '.$row['height'] . ' metrai ' .['Lapuotis', 'Spygliuotis', 'Krumas'][$row['type']-1] . '</li>';
+    echo '<li><b>ID:' .$row['id'] . '</b> '.$row['name'] . ' '.$row['height'] . ' metrai ' .['Lapuotis', 'Spygliuotis', 'Palme'][$row['type']-1] . '</li>';
 }
 echo '</ul>';

@@ -404,6 +404,17 @@
             border-radius: 6px;
             background-color: rgb(223, 235, 250);
         }
+
+        .rowLog {
+            text-align: center;
+            color: rgb(78, 93, 110);
+            border-radius: 6px;
+            background-color: rgb(223, 235, 250);
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 120px;
+        }
         
         .logoutF  {
             float: right;
@@ -437,10 +448,20 @@
             font-size: 17px;
         }
 
-        /* .login-form-group {
+        .login-form-group {
             display: flex;
-        } */
+            flex-wrap: wrap;
+        }
 
+        .simtas {
+            width: 100%;
+        }
+        .sesiasd {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         b {
             color: rgb(223, 235, 250);
             font-style: italic;
@@ -455,8 +476,9 @@
     <nav>
         <a class="btn-link" href="<?= URL ?>">Pradžia</a>
         <?php if (isLogged()) : ?>
-        <a class="btn-link" href="<?= URL ?>createNew">Nauja Sąskaita</a>
         <a class="btn-link" href="<?= URL ?>list">Sąrašas</a>
+        <a class="btn-link" href="<?= URL ?>createNew">Nauja Sąskaita</a>
+        
         
         <form class="logoutF" action="<?= URL ?>logout" method="post">
             <button type="submit" class="btn-logout">Atsijungti <b><?= $_SESSION['name'] ?></b></button>
