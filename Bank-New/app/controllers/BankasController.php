@@ -216,7 +216,7 @@ class BankasController
             
         } elseif ($action == 'minus') {
 
-            if ($actionAccData['Likutis']>$actionValue) {
+            if ($actionAccData['Likutis']>=$actionValue) {
                 $actionAccData['Likutis'] -=$actionValue;
 
                 $msg = "Lėšos SEKMINGAI nuskaičiuotos !";
