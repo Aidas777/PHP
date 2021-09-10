@@ -6,6 +6,7 @@ use App\Models\Pet;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Owner;
+use Carbon\Carbon;
 
 class PetController extends Controller
 {
@@ -17,6 +18,7 @@ class PetController extends Controller
     public function index()
     {
         $pets = Pet::all();
+        $owners = Owner::all();
         // $owners = Owner::all();
         return view('pet.index', ['pets' => $pets]);
 
@@ -47,10 +49,10 @@ class PetController extends Controller
         $pet = new Pet;
         $pet->name = $request->pet_name;
         $pet->species = $request->pet_species;
-        $pet->birth_date = $request->pet_bdate;
+        // $pet->birth_date = date('Y-m-d', strtotime($request->pet_bdate));
+        $pet->birth_date = Carbon::create($request->pet_bdate);
         $pet->document = $request->pet_document;
         $pet->history = $request->pet_history;
-
         $pet->doctor_id = $request->doctor_id;
         $pet->owner_id = $request->owner_id;
 
@@ -92,7 +94,16 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        //
+        $pet->name = $request->pet_name;
+        $pet->species = $request->pet_species;
+        $pet->birth_date = $request->pet_bdate;
+        $pet->document = $request->pet_document;
+        $pet->history = $request->pet_history;
+        $pet->doctor_id = $request->doctor_id;
+        $pet->owner_id = $request->owner_id;
+        $pet->save();
+        return redirect()->route('pet.index');
+
     }
 
     /**
@@ -103,6 +114,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        //
+        $pet->delete();
+        return redirect()->route('pet.index');
     }
 }

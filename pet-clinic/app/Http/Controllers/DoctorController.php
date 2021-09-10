@@ -92,6 +92,13 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
+        // $doctor->delete();
+        // return redirect()->route('doctor.index');
+
+        // dd($doctor->getPet->count());
+        if($doctor->getPet->count()){
+            return 'Negalima trinti, nes yra aptarnaujamu gyvunu.';
+        }
         $doctor->delete();
         return redirect()->route('doctor.index');
     }

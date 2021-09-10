@@ -47,7 +47,7 @@ class OwnerController extends Controller
         $owner->surname = $request->owner_surname;
         $owner->contacts = $request->owner_contacts;
 
-        // $owner->author_id = $request->author_id;
+        // $owner->owner_id = $request->owner_id;
         $owner->save();
         return redirect()->route('owner.index');
     }
@@ -71,7 +71,9 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner)
     {
-        //
+        $pets = Pet::all();
+        return view('owner.edit', ['pets' => $pets, 'owner' => $owner]);
+
     }
 
     /**
@@ -81,9 +83,30 @@ class OwnerController extends Controller
      * @param  \App\Models\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Owner $owner)
+    public function update(Request $request, Owner $owner, Pet $pet)
     {
-        //
+        $owner->name = $request->owner_name;
+        $owner->surname = $request->owner_surname;
+        $owner->contacts = $request->owner_contacts;
+        $owner->save();
+
+        // dd($request->pet_id);
+        // $pet->owner_id = $request->pet_id; ///
+
+
+        // $pet->name = $request->pet_name;
+        // $pet->species = $request->pet_species;
+        // $pet->birth_date = Carbon::create($request->pet_bdate);
+        // $pet->document = $request->pet_document;
+        // $pet->history = $request->pet_history;
+        // $pet->doctor_id = $request->doctor_id;
+        // $pet->owner_id = $request->owner_id;
+
+        // if (Pet $pet) {
+            // $pet->owner_id->save();
+        // }
+        return redirect()->route('owner.index');
+
     }
 
     /**
@@ -94,6 +117,13 @@ class OwnerController extends Controller
      */
     public function destroy(Owner $owner)
     {
-        //
+        // $owner->delete();
+        // return redirect()->route('owner.index');
+
+        if($owner->getPet->count()){
+            return 'Negalima trinti, nes šiam savininkui priklauso visdar aptarnaujamas gyvūnas.';
+        }
+        $owner->delete();
+        return redirect()->route('owner.index');
     }
 }

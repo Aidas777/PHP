@@ -1,5 +1,6 @@
 .card-header {
-    color: pink;
+    color: rgb(62, 61, 124);
+    background-color: rgb(214, 213, 255);
     font-style: italic;
     fieldset {
         border: 1px solid blueviolet;
@@ -10,8 +11,8 @@
             margin: 7px;
         }
         legend {
-            color: blueviolet;
-            font-size: 12px;
+            color: rgb(62, 61, 124);
+            font-size: 16px;
             display: inline-block;
             padding: 6px;
             text-align: center;
@@ -24,29 +25,40 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     &__content {
         display: flex;
         flex-direction: column;
+        min-width: 180px;
+        margin: 10px;
         small {
             color: gray;
             font-style: italic;
             font-size: 70%;
         }
     }
+    &__img {
+        img {
+            height: 200px;
+            width: auto;
+        }
+    }
     &__buttons {
         display: flex;
+        min-width: 210px;
+        margin: 10px 0;
     }
     .btn {
         margin: 3px;
-        &.btn-info {
-            transform: rotate(2deg);
-        }
-        &.btn-danger {
-            transform: rotate(-1deg);
-        }
-        &.btn-warning {
-            transform: rotate(-1.5deg);
-        }
+        // &.btn-info {
+        //     transform: rotate(2deg);
+        // }
+        // &.btn-danger {
+        //     transform: rotate(-1deg);
+        // }
+        // &.btn-warning {
+        //     transform: rotate(-1.5deg);
+        // }
     }
 }
 
@@ -69,5 +81,12 @@
         margin: 12px;
         font-size: 25px;
         text-transform: uppercase;
+    }
+}
+
+.img {
+    img {
+        height: 200px;
+        width: auto;
     }
 }

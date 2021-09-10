@@ -10003,7 +10003,8 @@ h3 {
   }
 }
 .card-header {
-  color: pink;
+  color: #3e3d7c;
+  background-color: #d6d5ff;
   font-style: italic;
 }
 .card-header fieldset {
@@ -10016,8 +10017,8 @@ h3 {
   margin: 7px;
 }
 .card-header fieldset legend {
-  color: blueviolet;
-  font-size: 12px;
+  color: #3e3d7c;
+  font-size: 16px;
   display: inline-block;
   padding: 6px;
   text-align: center;
@@ -10028,30 +10029,30 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 .list-block__content {
   display: flex;
   flex-direction: column;
+  min-width: 180px;
+  margin: 10px;
 }
 .list-block__content small {
   color: gray;
   font-style: italic;
   font-size: 70%;
 }
+.list-block__img img {
+  height: 200px;
+  width: auto;
+}
 .list-block__buttons {
   display: flex;
+  min-width: 210px;
+  margin: 10px 0;
 }
 .list-block .btn {
   margin: 3px;
-}
-.list-block .btn.btn-info {
-  transform: rotate(2deg);
-}
-.list-block .btn.btn-danger {
-  transform: rotate(-1deg);
-}
-.list-block .btn.btn-warning {
-  transform: rotate(-1.5deg);
 }
 
 .outfit-container {
@@ -10074,4 +10075,9 @@ h3 {
   margin: 12px;
   font-size: 25px;
   text-transform: uppercase;
+}
+
+.img img {
+  height: 200px;
+  width: auto;
 }
