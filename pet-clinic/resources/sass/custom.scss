@@ -1,0 +1,100 @@
+.card {
+    box-shadow: 5px 5px 5px gray;
+}
+.card-header {
+    background-color: rgb(214, 213, 255);
+    // rgb(229, 199, 253);
+    color: rgb(62, 54, 68);
+    font-size: 18px;
+    font-style: italic;
+}
+
+.card-body {
+    .btn {
+        box-shadow: 5px 5px 5px gray;
+    }
+}
+.form-group {
+    .text-muted {
+        font-style: italic;
+    }
+}
+
+.petforms-all {
+    // align-self: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.one-petform {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-self: center;
+    // max-height: 130px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 10px;
+    margin-top: -1px;
+}
+
+.one-petform-data {
+    width: 33%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.btn.confirm {
+    color: rgb(38, 58, 51);
+    background-color: rgb(166, 243, 217);
+    font-size: 16px;
+}
+.btn.edit {
+    color: rgb(38, 58, 51);
+    background-color: rgb(166, 243, 172);
+    font-size: 16px;
+}
+
+.btn.danger {
+    color: rgb(38, 58, 51);
+    background-color: rgb(253, 202, 200);
+    font-size: 16px;
+}
+
+.btn {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.form-group.borderg {
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 5px;
+    padding-left: 2%;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+
+}
+.placeImg {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.item-name {
+    font-size: 18px;
+    color: rgb(17, 110, 153);
+}
+
+.ital {
+    font-style: italic;
+}

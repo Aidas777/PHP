@@ -42,7 +42,8 @@ class DoctorController extends Controller
         $doctor->surname = $request->doctor_surname;
         $doctor->category = $request->doctor_category;
         $doctor->save();
-        return redirect()->route('doctor.index');
+        // return redirect()->route('doctor.index');
+        return redirect()->route('doctor.index')->with('success_message', 'Sekmingai įrašytas.');
     }
 
     /**
@@ -81,7 +82,8 @@ class DoctorController extends Controller
         $doctor->surname = $request->doctor_surname;
         $doctor->category = $request->doctor_category;
         $doctor->save();
-        return redirect()->route('doctor.index');
+        // return redirect()->route('doctor.index');
+        return redirect()->route('doctor.index')->with('success_message', 'Sėkmingai atnaujinta.');
     }
 
     /**
@@ -97,9 +99,12 @@ class DoctorController extends Controller
 
         // dd($doctor->getPet->count());
         if($doctor->getPet->count()){
-            return 'Negalima trinti, nes yra aptarnaujamu gyvunu.';
+            // return 'Negalima trinti, nes yra aptarnaujamu gyvunu.';
+            return redirect()->route('doctor.index')->with('info_message', 'Negalima trinti, nes yra aptarnaujamu gyvunu.');
         }
         $doctor->delete();
-        return redirect()->route('doctor.index');
+        // return redirect()->route('doctor.index');
+        return redirect()->route('doctor.index')->with('success_message', 'Sekmingai ištrintas.');
+
     }
 }

@@ -57,7 +57,8 @@ class PetController extends Controller
         $pet->owner_id = $request->owner_id;
 
         $pet->save();
-        return redirect()->route('pet.index');
+        // return redirect()->route('pet.index');
+        return redirect()->route('pet.index')->with('success_message', 'Sekmingai įrašytas.');
     }
 
 
@@ -102,7 +103,8 @@ class PetController extends Controller
         $pet->doctor_id = $request->doctor_id;
         $pet->owner_id = $request->owner_id;
         $pet->save();
-        return redirect()->route('pet.index');
+        // return redirect()->route('pet.index');
+        return redirect()->route('pet.index')->with('success_message', 'Sėkmingai atnaujinta.');
 
     }
 
@@ -115,6 +117,7 @@ class PetController extends Controller
     public function destroy(Pet $pet)
     {
         $pet->delete();
-        return redirect()->route('pet.index');
+        // return redirect()->route('pet.index');
+        return redirect()->route('pet.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 }

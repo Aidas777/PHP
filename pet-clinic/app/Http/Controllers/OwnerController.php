@@ -49,7 +49,8 @@ class OwnerController extends Controller
 
         // $owner->owner_id = $request->owner_id;
         $owner->save();
-        return redirect()->route('owner.index');
+        // return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success_message', 'Sekmingai įrašytas.');
     }
 
     /**
@@ -105,7 +106,8 @@ class OwnerController extends Controller
         // if (Pet $pet) {
             // $pet->owner_id->save();
         // }
-        return redirect()->route('owner.index');
+        // return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success_message', 'Sėkmingai atnaujinta.');
 
     }
 
@@ -121,9 +123,12 @@ class OwnerController extends Controller
         // return redirect()->route('owner.index');
 
         if($owner->getPet->count()){
-            return 'Negalima trinti, nes šiam savininkui priklauso visdar aptarnaujamas gyvūnas.';
+            // return 'Negalima trinti, nes šiam savininkui priklauso aptarnaujamas gyvūnas.';
+            return redirect()->route('owner.index')->with('info_message', 'Negalima trinti, 
+            nes šiam savininkui priklauso aptarnaujamas gyvūnas.');
         }
         $owner->delete();
-        return redirect()->route('owner.index');
+        // return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 }

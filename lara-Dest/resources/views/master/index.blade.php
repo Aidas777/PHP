@@ -20,7 +20,7 @@
                             <small>Curently has no outfits</small> 
                             @endif
                         </div>
-                        <div class="list-block__buttons">
+                        <div class="list-block__buttons" style="min-width: 0;">
                             <a href="{{route('master.edit',[$master])}}" class="btn btn-info">Edit</a>
                             <form method="POST" action="{{route('master.destroy', $master)}}">
                                 <button type="submit" class="btn btn-danger">Delete</button>

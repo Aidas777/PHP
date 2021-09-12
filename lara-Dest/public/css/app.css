@@ -10006,6 +10006,12 @@ h3 {
   color: #3e3d7c;
   background-color: #d6d5ff;
   font-style: italic;
+  font-size: 18px;
+  font-weight: 700;
+}
+.card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
 }
 .card-header fieldset {
   border: 1px solid blueviolet;
@@ -10080,4 +10086,8 @@ h3 {
 .img img {
   height: 200px;
   width: auto;
+}
+
+.card {
+  box-shadow: 5px 5px 5px gray;
 }
