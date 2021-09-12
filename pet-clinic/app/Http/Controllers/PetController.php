@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Owner;
 use Carbon\Carbon;
+use Validator;
 
 class PetController extends Controller
 {
@@ -46,6 +47,27 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
+        $birth_dateB = Carbon::create($request->pet_bdate);
+        $validator = Validator::make($request->all(),
+        [
+            'pet_name' => ['required', 'min:3', 'max:255'],
+            'pet_species' => ['required', 'min:3', 'max:20'],
+            'birth_dateB' => ['sometimes', 'date'],
+
+            'pet_document' => ['required', 'min:3', 'max:20'],
+            'pet_history' => ['required'],
+
+            'doctor_id' => ['required', 'integer', 'min:1'],
+            'owner_id' => ['required', 'integer', 'min:1']
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
+
         $pet = new Pet;
         $pet->name = $request->pet_name;
         $pet->species = $request->pet_species;
@@ -95,9 +117,31 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
+        $birth_dateB = Carbon::create($request->pet_bdate);
+        $validator = Validator::make($request->all(),
+        [
+            'pet_name' => ['required', 'min:3', 'max:255'],
+            'pet_species' => ['required', 'min:3', 'max:20'],
+            'birth_dateB' => ['sometimes', 'date'],
+
+            'pet_document' => ['required', 'min:3', 'max:20'],
+            'pet_history' => ['required'],
+
+            'doctor_id' => ['required', 'integer', 'min:1'],
+            'owner_id' => ['required', 'integer', 'min:1']
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
+        
         $pet->name = $request->pet_name;
         $pet->species = $request->pet_species;
-        $pet->birth_date = $request->pet_bdate;
+        // $pet->birth_date = $request->pet_bdate;
+        $pet->birth_date = Carbon::create($request->pet_bdate);
         $pet->document = $request->pet_document;
         $pet->history = $request->pet_history;
         $pet->doctor_id = $request->doctor_id;

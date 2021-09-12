@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use App\Models\Pet;
-
+use Validator;
 
 class OwnerController extends Controller
 {
@@ -42,6 +42,19 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'owner_name' => ['required', 'min:3', 'max:64'],
+            'owner_surname' => ['required', 'min:3', 'max:64'],
+            'owner_contacts' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
         $owner = new Owner;
         $owner->name = $request->owner_name;
         $owner->surname = $request->owner_surname;
@@ -86,6 +99,20 @@ class OwnerController extends Controller
      */
     public function update(Request $request, Owner $owner, Pet $pet)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'owner_name' => ['required', 'min:3', 'max:64'],
+            'owner_surname' => ['required', 'min:3', 'max:64'],
+            'owner_contacts' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
+        
         $owner->name = $request->owner_name;
         $owner->surname = $request->owner_surname;
         $owner->contacts = $request->owner_contacts;

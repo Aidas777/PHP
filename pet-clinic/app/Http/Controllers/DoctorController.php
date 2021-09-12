@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Validator;
 
 class DoctorController extends Controller
 {
@@ -36,6 +37,23 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'doctor_name' => ['required', 'min:3', 'max:64'],
+            'doctor_surname' => ['required', 'min:3', 'max:64'],
+            'doctor_category' => ['required', 'min:3', 'max:32']
+        ]
+        // ,
+        // [
+        // 'author_surname.min' => 'mano zinute'
+        // ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+        
         // dd($request);
         $doctor = new Doctor;
         $doctor->name = $request->doctor_name;
@@ -78,6 +96,19 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'doctor_name' => ['required', 'min:3', 'max:64'],
+            'doctor_surname' => ['required', 'min:3', 'max:64'],
+            'doctor_category' => ['required', 'min:3', 'max:32']
+        ]);
+
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
         $doctor->name = $request->doctor_name;
         $doctor->surname = $request->doctor_surname;
         $doctor->category = $request->doctor_category;

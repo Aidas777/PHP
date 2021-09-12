@@ -44,7 +44,7 @@
                         {{-- Istorija: <textarea name="pet_history"></textarea> --}}
                         <div class="form-group">
                             <label>Istorija</label>
-                            <textarea type="text" name="pet_history" class="form-control"></textarea>
+                            <textarea type="text" name="pet_history" class="form-control" id="summernote"></textarea>
                             <small class="form-text text-muted">Nurodykite istoriją.</small>
                         </div>
 
@@ -76,6 +76,13 @@
         </div>
     </div>
  </div>
+
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
+</script>
+
 @endsection
 
 @section('title') Naujas Gyvūnas @endsection

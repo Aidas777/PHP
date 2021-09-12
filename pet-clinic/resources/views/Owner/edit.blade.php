@@ -27,7 +27,7 @@
                         {{-- Contacts: <textarea name="owner_contacts">{{$owner->contacts}}</textarea> --}}
                         <div class="form-group">
                             <label>Kontaktinė informacija</label>
-                            <textarea type="text" class="form-control" name="owner_contacts">{{$owner->contacts}}</textarea>
+                            <textarea type="text" class="form-control" name="owner_contacts" id="summernote">{{$owner->contacts}}</textarea>
                             <small class="form-text text-muted">Nurodykite kontaktus</small>
                         </div>
 
@@ -46,8 +46,9 @@
                                     @endif
                                 </div>
                             @endforeach --}}
+                        <label><i>Augintiniai</label>
                         <div class="form-group borderg">
-                            <label><i>Augintiniai</label>
+                            
                             @foreach ($pets as $pet)
                                 <div value="{{$pet->id}}">
                                     <small>
@@ -69,6 +70,13 @@
        </div>
    </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
+</script>
+
 @endsection
 
 @section('title') Savininko redagavimas @endsection

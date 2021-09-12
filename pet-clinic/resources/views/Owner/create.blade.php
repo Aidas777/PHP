@@ -27,7 +27,7 @@
                     {{-- Contacts: <textarea name="owner_contacts"></textarea> --}}
                     <div class="form-group">
                         <label>Kontaktinė informacija</label>
-                        <textarea type="text" name="owner_contacts" class="form-control"></textarea>
+                        <textarea type="text" name="owner_contacts" class="form-control" id="summernote"></textarea>
                         <small class="form-text text-muted">Nurodykite kontaktinę informaciją.</small>
                     </div>
                 
@@ -48,6 +48,13 @@
        </div>
    </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
+</script>
+
 @endsection
 
 @section('title') Naujas Savininkas @endsection
