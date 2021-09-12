@@ -9,24 +9,33 @@
 
                <div class="card-body">
 {{-- //// --}}
-                @foreach ($doctors as $doctor)
-                <a href="{{route('doctor.edit',[$doctor])}}">{{$doctor->id}}. {{$doctor->name}} {{$doctor->surname}} {{$doctor->category}}</a>
+                <ul class="petforms-all">
+                    @foreach ($doctors as $doctor)
+                    <li class="one-ownerform">
+                      <span class="one-ownerform-data">
+                          {{$doctor->id}}. <b>{{$doctor->name}} {{$doctor->surname}}</b> <i>{{$doctor->category}}</i>
 
-                <div>
-                  @if($doctor->getPet->count())
-                  <small>Priskirtų gyvūnų skaičius: {{$doctor->getPet->count()}}</small>
-                  @else
-                  <small>Šiuo metu nėra priskirtų gyvūnų.</small> 
-                  @endif
-                </div>
+                          <div>
+                              @if($doctor->getPet->count())
+                                  <small class="ital">Priskirtų gyvūnų skaičius: {{$doctor->getPet->count()}}</small>
+                              @else
+                                  <small class="ital">Šiuo metu nėra priskirtų gyvūnų.</small> 
+                              @endif
+                          </div>
+                      </span>
 
-
-                <form method="POST" action="{{route('doctor.destroy', $doctor)}}">
-                @csrf
-                <button type="submit">Delete</button>
-                </form>
-                <br>
-              @endforeach
+                      <div class="btns">
+                      <div>
+                          <a href="{{route('doctor.edit',[$doctor])}}" class="btn edit">Edit</a>
+                      </div>
+                          <form method="POST" action="{{route('doctor.destroy', $doctor)}}">
+                              @csrf
+                              <button type="submit" class="btn danger">Delete</button>
+                          </form>
+                      </div>
+                    </li>
+                    @endforeach
+                </ul>
 {{-- //// --}}
                </div>
            </div>

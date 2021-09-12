@@ -59,7 +59,9 @@
                             @endforeach
                         </div></i>
                         @csrf
-                        <button type="submit" class="btn confirm">Atnaujinti</button>
+                        <div class="btn-center">
+                            <button type="submit" class="btn confirm">Atnaujinti</button>
+                        </div>
                     </form>
 {{-- //// --}}                   
                </div>

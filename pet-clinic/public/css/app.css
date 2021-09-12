@@ -10042,15 +10042,42 @@ h3 {
   margin-bottom: auto;
 }
 
+.one-ownerform {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-self: center;
+  min-height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 10px;
+  margin-top: -1px;
+}
+
+.one-ownerform-data {
+  width: 66.6%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 3%;
+}
+
+.little-data {
+  width: 40%;
+  min-width: 200px;
+  margin-top: 3px;
+  display: flex;
+  float: inline-end;
+  font-style: italic;
+}
+
 .btn.confirm {
   color: #263a33;
-  background-color: #a6f3d9;
+  background-color: #9fff9f;
   font-size: 16px;
 }
 
 .btn.edit {
-  color: #263a33;
-  background-color: #a6f3ac;
+  color: #111858;
+  background-color: #a6b4f3;
   font-size: 16px;
 }
 
@@ -10060,17 +10087,21 @@ h3 {
   font-size: 16px;
 }
 
-.btn {
-  margin-left: 15%;
-  margin-right: 15%;
-}
-
 .btns {
   display: flex;
   justify-content: center;
   width: 30%;
   margin-top: auto;
   margin-bottom: auto;
+}
+.btns .btn {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.btn-center {
+  justify-content: center;
+  display: flex;
 }
 
 .form-group.borderg {
@@ -10091,7 +10122,7 @@ img {
 
 .item-name {
   font-size: 18px;
-  color: #116e99;
+  color: #074cb3;
 }
 
 .ital {

@@ -11,35 +11,35 @@
 {{-- //// --}}  
                     <ul class="petforms-all">
                         @foreach ($pets as $pet)
-                        <li class="one-petform">
-                            <div class="placeImg">
-                                    @if($pet->photo)
-                                    <img src="{{$pet->photo}}" alt="{{$pet->type}}">
-                                    @else
-                                    <img src="{{asset('img/no-image.jpg')}}" alt="{{$pet->type}}">
-                                    @endif
-                            </div>
-                            <span class="one-petform-data">
-                                {{-- <a href="{{route('pet.edit',[$pet])}}" class="btn edit"> --}}
-                                <b class="item-name">{{$pet->name}} {{$pet->species}}</b>
-                                {{-- <br> --}}
-                                <div>
-                                    <div><small class="ital"><b>Savininkas:</b> {{$pet->getOwner->name}} {{$pet->getOwner->surname}}</small></div>
-                                    <div><small class="ital"><b>Gydytojas:</b> {{$pet->getDoctor->name}} {{$pet->getDoctor->surname}}</small></div>
+                            <li class="one-petform">
+                                <div class="placeImg">
+                                        @if($pet->photo)
+                                        <img src="{{$pet->photo}}" alt="{{$pet->type}}">
+                                        @else
+                                        <img src="{{asset('img/no-image.jpg')}}" alt="{{$pet->type}}">
+                                        @endif
                                 </div>
-                            </span>
+                                <span class="one-petform-data">
+                                    {{-- <a href="{{route('pet.edit',[$pet])}}" class="btn edit"> --}}
+                                    <b class="item-name">{{$pet->name}} {{$pet->species}}</b>
+                                    {{-- <br> --}}
+                                    <div>
+                                        <div><small class="ital"><b>Savininkas:</b> {{$pet->getOwner->name}} {{$pet->getOwner->surname}}</small></div>
+                                        <div><small class="ital"><b>Gydytojas:</b> {{$pet->getDoctor->name}} {{$pet->getDoctor->surname}}</small></div>
+                                    </div>
+                                </span>
 
-                            <div class="btns">
-                                <div>
-                                    <a href="{{route('pet.edit',[$pet])}}" class="btn edit">Edit</a>
+                                <div class="btns">
+                                    <div>
+                                        <a href="{{route('pet.edit',[$pet])}}" class="btn edit">Edit</a>
+                                    </div>
+
+                                    <form method="POST" action="{{route('pet.destroy', [$pet])}}">
+                                        @csrf
+                                        <button type="submit" class="btn danger">Delete</button>
+                                    </form>
                                 </div>
-
-                                <form method="POST" action="{{route('pet.destroy', [$pet])}}">
-                                    @csrf
-                                    <button type="submit" class="btn danger">Delete</button>
-                                </form>
-                            </div>
-                         </li>
+                            </li>
                         @endforeach
                         </ul>
 

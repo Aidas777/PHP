@@ -8,10 +8,7 @@
                <div class="card-header">Naujas Savininkas</div>
 
                <div class="card-body">
-
-
-
-
+{{-- //// --}}
                 <form method="POST" action="{{route('owner.store')}}">
                     Name: <input type="text" name="owner_name">
                     Surname: <input type="text" name="owner_surname">
@@ -26,11 +23,7 @@
                     @csrf
                     <button type="submit">Add</button>
                 </form>
-
-
-
-
-
+{{-- //// --}}
                </div>
            </div>
        </div>

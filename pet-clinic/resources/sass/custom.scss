@@ -37,20 +37,48 @@
     margin-top: -1px;
 }
 
+
 .one-petform-data {
     width: 33%;
     margin-top: auto;
     margin-bottom: auto;
 }
 
+.one-ownerform {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-self: center;
+    min-height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 10px;
+    margin-top: -1px;
+}
+
+.one-ownerform-data {
+    width: 66.6%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3%;
+}
+
+.little-data {
+    width: 40%;
+    min-width: 200px;
+    margin-top: 3px;
+    display: flex;
+    float: inline-end;
+    font-style: italic;
+}
+
 .btn.confirm {
     color: rgb(38, 58, 51);
-    background-color: rgb(166, 243, 217);
+    background-color: rgb(159, 255, 159);
     font-size: 16px;
 }
 .btn.edit {
-    color: rgb(38, 58, 51);
-    background-color: rgb(166, 243, 172);
+    color: rgb(17, 24, 88);
+    background-color: rgb(166, 180, 243);
     font-size: 16px;
 }
 
@@ -60,10 +88,10 @@
     font-size: 16px;
 }
 
-.btn {
-    margin-left: 15%;
-    margin-right: 15%;
-}
+// .btn {
+//     margin-left: 15%;
+//     margin-right: 15%;
+// }
 
 .btns {
     display: flex;
@@ -71,8 +99,16 @@
     width: 30%;
     margin-top: auto;
     margin-bottom: auto;
+    .btn {
+    margin-left: 15%;
+    margin-right: 15%;
+}
 }
 
+.btn-center {
+    justify-content: center;
+    display: flex;
+}
 
 .form-group.borderg {
     border: 1px solid rgb(206, 212, 218);
@@ -92,7 +128,7 @@ img {
 
 .item-name {
     font-size: 18px;
-    color: rgb(17, 110, 153);
+    color: rgb(7, 76, 179);
 }
 
 .ital {

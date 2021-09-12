@@ -9,17 +9,29 @@
 
                <div class="card-body">
 {{-- //// --}}
+                  <ul class="petforms-all">
+                    @foreach ($owners as $owner)
+                    <li class="one-ownerform">
+                      {{-- {{dd($owner->id, $owner->getPet[1]->species)}} --}}
+                      <span class="one-ownerform-data">
+                            <span><b class="item-name">{{$owner->name}} {{$owner->surname}}</b></span>
+                            <div class="little-data"><b>Augintinis: </b> &nbsp {{$owner->getPet[0]->species ?? ''}} {{$owner->getPet[0]->name ?? 'nenurodyta'}}</div>
+                      </span>
 
-                  @foreach ($owners as $owner)
-                  {{-- {{dd($owner->id, $owner->getPet[1]->species)}} --}}
-                    <a href="{{route('owner.edit',[$owner])}}">{{$owner->name}} {{$owner->surname}}</a>
-                    <div><small>Augintinis: {{$owner->getPet[0]->species ?? ''}} {{$owner->getPet[0]->name ?? 'nenurodyta'}}</small></div>
-                    <form method="POST" action="{{route('owner.destroy', [$owner])}}">
-                    @csrf
-                    <button type="submit">Delete</button>
-                    </form>
-                    <br>
-                  @endforeach
+                        <div class="btns">
+
+                            <div>
+                                <a href="{{route('owner.edit',[$owner])}}" class="btn edit">Edit</a>
+                            </div>
+
+                            <form method="POST" action="{{route('owner.destroy', [$owner])}}">
+                            @csrf
+                            <button type="submit" class="btn danger">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                    @endforeach
+                  </ul>
 
 
                   {{-- @foreach ($books as $book)
