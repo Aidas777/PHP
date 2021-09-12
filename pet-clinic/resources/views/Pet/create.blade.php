@@ -13,30 +13,62 @@
                 <div class="card-body">
 {{-- //// --}} 
                     <form method="POST" action="{{route('pet.store')}}">
-                        Vardas: <input type="text" name="pet_name">
-                        Rūšis: <input type="text" name="pet_species">
-                        Gim. data: <input type="text" name="pet_bdate">
-                        Documentas: <input type="text" name="pet_document">
-                        Istorija: <textarea name="pet_history"></textarea>
+                        {{-- Vardas: <input type="text" name="pet_name"> --}}
+                        <div class="form-group">
+                            <label>Vardas</label>
+                            <input type="text" name="pet_name" class="form-control">
+                            <small class="form-text text-muted">Nurodykite augintinio vardą</small>
+                        </div>
 
-                        Savininkas:
-                        <select name="owner_id">
-                            @foreach ($owners as $owner)
-                                <option value="{{$owner->id}}">{{$owner->name}} {{$owner->surname}}</option>
-                            @endforeach
-                        </select>
+                        {{-- Rūšis: <input type="text" name="pet_species"> --}}
+                        <div class="form-group">
+                            <label>Rūšis</label>
+                            <input type="text" name="pet_species" class="form-control">
+                            <small class="form-text text-muted">Nurodykite rūšį / tipą.</small>
+                        </div>
 
-                        Gydytojas:
-                        <select name="doctor_id">
-                            @foreach ($doctors as $doctor)
-                                <option value="{{$doctor->id}}">{{$doctor->name}} {{$doctor->surname}}</option>
-                            @endforeach
-                        </select>
-                    
+                        {{-- Gim. data: <input type="text" name="pet_bdate"> --}}
+                        <div class="form-group">
+                            <label>Gimimo data</label>
+                            <input type="text" name="pet_bdate" class="form-control">
+                            <small class="form-text text-muted">Nurodykite gimimo datą.</small>
+                        </div>
 
+                        {{-- Documentas: <input type="text" name="pet_document"> --}}
+                        <div class="form-group">
+                            <label>Documentas</label>
+                            <input type="text" name="pet_document" class="form-control">
+                            <small class="form-text text-muted">Nurodykite documentą.</small>
+                        </div>
+
+                        {{-- Istorija: <textarea name="pet_history"></textarea> --}}
+                        <div class="form-group">
+                            <label>Istorija</label>
+                            <textarea type="text" name="pet_history" class="form-control"></textarea>
+                            <small class="form-text text-muted">Nurodykite istoriją.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Savininkas</label>
+                            <select name="owner_id" class="form-control">
+                                @foreach ($owners as $owner)
+                                    <option value="{{$owner->id}}">{{$owner->name}} {{$owner->surname}}</option>
+                                @endforeach
+                            </select>
+
+                            <label><b>Gydytojas</b></label>
+                            <select name="doctor_id" class="form-control">
+                                @foreach ($doctors as $doctor)
+                                    <option value="{{$doctor->id}}">{{$doctor->name}} {{$doctor->surname}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         @csrf
 
-                        <button type="submit">Add</button>
+                        <div class="btn-center">
+                            <button type="submit" class="btn addbtn" >Add</button>
+                        </div>
+
                     </form>
 {{-- //// --}}                     
                 </div>

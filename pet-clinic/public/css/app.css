@@ -10013,7 +10013,7 @@ h3 {
   font-style: italic;
 }
 
-.card-body .btn {
+.card-body .btn:not(.note-btn) {
   box-shadow: 5px 5px 5px gray;
 }
 
@@ -10034,6 +10034,7 @@ h3 {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 10px;
   margin-top: -1px;
+  background-color: #ebfceb;
 }
 
 .one-petform-data {
@@ -10051,6 +10052,7 @@ h3 {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 10px;
   margin-top: -1px;
+  background-color: #ebfceb;
 }
 
 .one-ownerform-data {
@@ -10066,6 +10068,7 @@ h3 {
   margin-top: 3px;
   display: flex;
   float: inline-end;
+  justify-content: center;
   font-style: italic;
 }
 
@@ -10083,8 +10086,16 @@ h3 {
 
 .btn.danger {
   color: #263a33;
-  background-color: #fdcac8;
+  background-color: #cfb081;
   font-size: 16px;
+}
+
+.btn.addbtn {
+  color: #263a33;
+  background-color: #95fd75;
+  font-size: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .btns {
@@ -10113,6 +10124,7 @@ h3 {
 img {
   height: auto;
   max-width: 100%;
+  padding: 7px;
 }
 
 .placeImg {
@@ -10122,7 +10134,7 @@ img {
 
 .item-name {
   font-size: 18px;
-  color: #074cb3;
+  color: #006960;
 }
 
 .ital {

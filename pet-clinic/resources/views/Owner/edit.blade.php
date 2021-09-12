@@ -60,7 +60,7 @@
                         </div></i>
                         @csrf
                         <div class="btn-center">
-                            <button type="submit" class="btn confirm">Atnaujinti</button>
+                            <button type="submit" class="btn confirm">Update</button>
                         </div>
                     </form>
 {{-- //// --}}                   

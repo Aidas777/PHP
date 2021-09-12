@@ -10,11 +10,31 @@
                <div class="card-body">
 {{-- //// --}}
                 <form method="POST" action="{{route('doctor.store')}}">
-                    Vardas: <input type="text" name="doctor_name">
-                    Pavardė: <input type="text" name="doctor_surname">
-                    Kategorija: <input type="text" name="doctor_category">
+                    {{-- Vardas: <input type="text" name="doctor_name"> --}}
+                    <div class="form-group">
+                        <label>Vardas</label>
+                        <input type="text" name="doctor_name" class="form-control">
+                        <small class="form-text text-muted">Nurodykite vardą</small>
+                    </div>
+
+                    {{-- Pavardė: <input type="text" name="doctor_surname"> --}}
+                    <div class="form-group">
+                        <label>Pavardė</label>
+                        <input type="text" name="doctor_surname" class="form-control">
+                        <small class="form-text text-muted">Nurodykite pavardę</small>
+                        </div>
+
+                    {{-- Kategorija: <input type="text" name="doctor_category"> --}}
+                    <div class="form-group">
+                        <label>Kategorija</label>
+                        <input type="text" name="doctor_category" class="form-control">
+                        <small class="form-text text-muted">Nurodykite gydytojo kategoriją</small>
+                    </div>
+
                     @csrf
-                    <button type="submit">ADD</button>
+                    <div class="btn-center">
+                        <button type="submit" class="btn addbtn" >Add</button>
+                    </div>
                 </form>
 {{-- //// --}}
                </div>

@@ -1,8 +1,3 @@
-
- 
-
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -48,7 +43,7 @@
                         <div class="form-group">
                             <label>Istorija</label>
                             {{-- <input type="text" class="form-control" name="pet_name" value="{{$pet->history}}"> --}}
-                            <textarea type="text" class="form-control" name="pet_history">{{$pet->history}}</textarea>
+                            <textarea type="text" class="form-control" name="pet_history" id="summernote">{{$pet->history}}</textarea>
                             <small class="form-text text-muted">Augintinio istoriją</small>
                         </div>
 
@@ -91,7 +86,7 @@
 
                         @csrf
                         <div class="btn-center">
-                            <button type="submit" class="btn confirm">Atnaujinti</button>
+                            <button type="submit" class="btn confirm">Update</button>
                         </div>
                     </form>
 {{-- //// --}}                    
@@ -100,6 +95,13 @@
        </div>
    </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
+</script>
+
 @endsection
 
 @section('title') Gyvūno redagavimas @endsection

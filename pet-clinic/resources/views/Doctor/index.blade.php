@@ -13,7 +13,8 @@
                     @foreach ($doctors as $doctor)
                     <li class="one-ownerform">
                       <span class="one-ownerform-data">
-                          {{$doctor->id}}. <b>{{$doctor->name}} {{$doctor->surname}}</b> <i>{{$doctor->category}}</i>
+                          {{$doctor->id}}. <b class="item-name">{{$doctor->name}} {{$doctor->surname}}</b>
+                           <i class="little-data">{{$doctor->category}}</i>
 
                           <div>
                               @if($doctor->getPet->count())

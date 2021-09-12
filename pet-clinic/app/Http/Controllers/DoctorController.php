@@ -100,7 +100,7 @@ class DoctorController extends Controller
         // dd($doctor->getPet->count());
         if($doctor->getPet->count()){
             // return 'Negalima trinti, nes yra aptarnaujamu gyvunu.';
-            return redirect()->route('doctor.index')->with('info_message', 'Negalima trinti, nes yra aptarnaujamu gyvunu.');
+            return redirect()->route('doctor.index')->with('info_message', 'Negalima trinti, nes yra aptarnaujamų gyvūnų.');
         }
         $doctor->delete();
         // return redirect()->route('doctor.index');

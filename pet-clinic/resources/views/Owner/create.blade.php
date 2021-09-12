@@ -10,9 +10,26 @@
                <div class="card-body">
 {{-- //// --}}
                 <form method="POST" action="{{route('owner.store')}}">
-                    Name: <input type="text" name="owner_name">
-                    Surname: <input type="text" name="owner_surname">
-                    Contacts: <textarea name="owner_contacts"></textarea>
+                    {{-- Name: <input type="text" name="owner_name"> --}}
+                    <div class="form-group">
+                        <label>Vardas</label>
+                        <input type="text" name="owner_name" class="form-control">
+                        <small class="form-text text-muted">Nurodykite vardą</small>
+                    </div>
+
+                    {{-- Surname: <input type="text" name="owner_surname"> --}}
+                    <div class="form-group">
+                        <label>Pavardė</label>
+                        <input type="text" name="owner_surname" class="form-control">
+                        <small class="form-text text-muted">Nurodykite pavardę</small>
+                    </div>
+
+                    {{-- Contacts: <textarea name="owner_contacts"></textarea> --}}
+                    <div class="form-group">
+                        <label>Kontaktinė informacija</label>
+                        <textarea type="text" name="owner_contacts" class="form-control"></textarea>
+                        <small class="form-text text-muted">Nurodykite kontaktinę informaciją.</small>
+                    </div>
                 
                     
                     {{-- <select name="author_id">
@@ -21,7 +38,9 @@
                         @endforeach
                     </select> --}}
                     @csrf
-                    <button type="submit">Add</button>
+                    <div class="btn-center">
+                        <button type="submit" class="btn addbtn" >Add</button>
+                    </div>
                 </form>
 {{-- //// --}}
                </div>
