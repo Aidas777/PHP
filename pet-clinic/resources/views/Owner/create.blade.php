@@ -13,21 +13,21 @@
                     {{-- Name: <input type="text" name="owner_name"> --}}
                     <div class="form-group">
                         <label>Vardas</label>
-                        <input type="text" name="owner_name" class="form-control">
+                        <input type="text" name="owner_name" class="form-control" value="{{old('owner_name')}}">
                         <small class="form-text text-muted">Nurodykite vardą</small>
                     </div>
 
                     {{-- Surname: <input type="text" name="owner_surname"> --}}
                     <div class="form-group">
                         <label>Pavardė</label>
-                        <input type="text" name="owner_surname" class="form-control">
+                        <input type="text" name="owner_surname" class="form-control" value="{{old('owner_surname')}}">
                         <small class="form-text text-muted">Nurodykite pavardę</small>
                     </div>
 
                     {{-- Contacts: <textarea name="owner_contacts"></textarea> --}}
                     <div class="form-group">
                         <label>Kontaktinė informacija</label>
-                        <textarea type="text" name="owner_contacts" class="form-control" id="summernote"></textarea>
+                        <textarea type="text" name="owner_contacts" class="form-control" id="summernote">{{old('owner_contacts')}}</textarea>
                         <small class="form-text text-muted">Nurodykite kontaktinę informaciją.</small>
                     </div>
                 

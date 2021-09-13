@@ -13,21 +13,21 @@
                     {{-- Name: <input type="text" name="doctor_name" value="{{$doctor->name}}"> --}}
                     <div class="form-group">
                         <label>Vardas</label>
-                        <input type="text" name="doctor_name"  class="form-control" value="{{$doctor->name}}">
+                        <input type="text" name="doctor_name"  class="form-control" value="{{old('doctor_name',$doctor->name)}}">
                         <small class="form-text text-muted">Nurodykite vardą</small>
                     </div>
 
                     {{-- Surname: <input type="text" name="doctor_surname" value="{{$doctor->surname}}"> --}}
                     <div class="form-group">
                         <label>Pavardė</label>
-                        <input type="text" name="doctor_surname"  class="form-control" value="{{$doctor->surname}}">
+                        <input type="text" name="doctor_surname"  class="form-control" value="{{old('doctor_surname',$doctor->surname)}}">
                         <small class="form-text text-muted">Nurodykite pavardę</small>
                         </div>
 
                     {{-- Category: <input type="text" name="doctor_category" value="{{$doctor->category}}"> --}}
                     <div class="form-group">
                         <label>Kategorija</label>
-                        <input type="text" name="doctor_category"  class="form-control" value="{{$doctor->category}}">
+                        <input type="text" name="doctor_category"  class="form-control" value="{{old('doctor_category',$doctor->category)}}">
                         <small class="form-text text-muted">Nurodykite kategoriją</small>
                         </div>
 

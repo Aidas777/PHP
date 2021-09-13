@@ -47,12 +47,14 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        $birth_dateB = Carbon::create($request->pet_bdate);
+        // $birth_dateB = Carbon::create(str_replace('.', '-', $request->pet_bdate));
         $validator = Validator::make($request->all(),
         [
             'pet_name' => ['required', 'min:3', 'max:255'],
             'pet_species' => ['required', 'min:3', 'max:20'],
             'birth_dateB' => ['sometimes', 'date'],
+            // 'birth_date' => ['sometimes', 'integer', 'min:'.date("Y")-100],
+
 
             'pet_document' => ['required', 'min:3', 'max:20'],
             'pet_history' => ['required'],
@@ -72,7 +74,9 @@ class PetController extends Controller
         $pet->name = $request->pet_name;
         $pet->species = $request->pet_species;
         // $pet->birth_date = date('Y-m-d', strtotime($request->pet_bdate));
-        $pet->birth_date = Carbon::create($request->pet_bdate);
+        // $pet->birth_date = date('Y.m.d', strtotime($request->pet_bdate));
+        // $pet->birth_date = date_format($request->pet_bdate,'Y-m-d');
+        $pet->birth_date = Carbon::create(str_replace('.', '-', $request->pet_bdate));
         $pet->document = $request->pet_document;
         $pet->history = $request->pet_history;
         $pet->doctor_id = $request->doctor_id;
@@ -117,12 +121,14 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        $birth_dateB = Carbon::create($request->pet_bdate);
+        // $birth_dateB = Carbon::create(str_replace('.', '-', $request->pet_bdate));
         $validator = Validator::make($request->all(),
         [
             'pet_name' => ['required', 'min:3', 'max:255'],
             'pet_species' => ['required', 'min:3', 'max:20'],
-            'birth_dateB' => ['sometimes', 'date'],
+            // 'birth_dateB' => ['sometimes', 'date'],
+            // 'birth_date' => ['sometimes', 'integer', 'min:'.date("Y")-100],
+            'birth_date' => ['sometimes', 'date'],
 
             'pet_document' => ['required', 'min:3', 'max:20'],
             'pet_history' => ['required'],
@@ -141,7 +147,9 @@ class PetController extends Controller
         $pet->name = $request->pet_name;
         $pet->species = $request->pet_species;
         // $pet->birth_date = $request->pet_bdate;
-        $pet->birth_date = Carbon::create($request->pet_bdate);
+        $pet->birth_date = Carbon::create(str_replace('.', '-', $request->pet_bdate));
+        // $pet->birth_date = date_format($request->pet_bdate, 'Y.m.d');
+        // $pet->birth_date = date('Y.m.d', strtotime($request->pet_bdate));
         $pet->document = $request->pet_document;
         $pet->history = $request->pet_history;
         $pet->doctor_id = $request->doctor_id;

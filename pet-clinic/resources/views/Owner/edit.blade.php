@@ -13,21 +13,21 @@
                         {{-- Name: <input type="text" name="owner_name" value="{{$owner->name}}"> --}}
                         <div class="form-group">
                             <label>Vardas</label>
-                            <input type="text" class="form-control" name="owner_name" value="{{$owner->name}}">
+                            <input type="text" class="form-control" name="owner_name" value="{{old('owner_name', $owner->name)}}">
                             <small class="form-text text-muted">Nurodykite vardą</small>
                         </div>
 
                         {{-- Surname: <input type="text" name="owner_surname" value="{{$owner->surname}}"> --}}
                         <div class="form-group">
                             <label>Pavardė</label>
-                            <input type="text" class="form-control" name="owner_surname" value="{{$owner->surname}}">
+                            <input type="text" class="form-control" name="owner_surname" value="{{old('owner_surname', $owner->surname)}}">
                             <small class="form-text text-muted">Nurodykite pavardę</small>
                         </div>
 
                         {{-- Contacts: <textarea name="owner_contacts">{{$owner->contacts}}</textarea> --}}
                         <div class="form-group">
                             <label>Kontaktinė informacija</label>
-                            <textarea type="text" class="form-control" name="owner_contacts" id="summernote">{{$owner->contacts}}</textarea>
+                            <textarea type="text" class="form-control" name="owner_contacts" id="summernote">{{old('owner_contacts', $owner->contacts)}}</textarea>
                             <small class="form-text text-muted">Nurodykite kontaktus</small>
                         </div>
 
@@ -46,6 +46,9 @@
                                     @endif
                                 </div>
                             @endforeach --}}
+
+                        {{-- {{dd($owner->getPet([1])->$pets->id)}} --}}
+                        {{-- @if($owner->getPet([0])) --}}
                         <label><i>Augintiniai</label>
                         <div class="form-group borderg">
                             
@@ -59,6 +62,7 @@
                                 </div>
                             @endforeach
                         </div></i>
+                        {{-- @endif --}}
                         @csrf
                         <div class="btn-center">
                             <button type="submit" class="btn confirm">Update</button>

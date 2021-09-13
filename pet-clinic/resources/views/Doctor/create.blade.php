@@ -13,21 +13,21 @@
                     {{-- Vardas: <input type="text" name="doctor_name"> --}}
                     <div class="form-group">
                         <label>Vardas</label>
-                        <input type="text" name="doctor_name" class="form-control">
+                        <input type="text" name="doctor_name" class="form-control" value="{{old('doctor_name')}}">
                         <small class="form-text text-muted">Nurodykite vardą</small>
                     </div>
 
                     {{-- Pavardė: <input type="text" name="doctor_surname"> --}}
                     <div class="form-group">
                         <label>Pavardė</label>
-                        <input type="text" name="doctor_surname" class="form-control">
+                        <input type="text" name="doctor_surname" class="form-control" value="{{old('doctor_surname')}}">
                         <small class="form-text text-muted">Nurodykite pavardę</small>
                         </div>
 
                     {{-- Kategorija: <input type="text" name="doctor_category"> --}}
                     <div class="form-group">
                         <label>Kategorija</label>
-                        <input type="text" name="doctor_category" class="form-control">
+                        <input type="text" name="doctor_category" class="form-control" value="{{old('doctor_category')}}">
                         <small class="form-text text-muted">Nurodykite gydytojo kategoriją</small>
                     </div>
 
