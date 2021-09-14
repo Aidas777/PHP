@@ -17,6 +17,11 @@ class Doctor extends Model
         // return $this->belongsTo('App\Models\Pet', 'doctor_id', 'id');
     }
 
+    // public function getOwner()
+    // {
+    //     return $this->hasMany('App\Models\Owner', 'doctor_id', 'id');
+    // }
+
     // Autoriuje
     // public function authorBooks()
     // {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Validator;
+use App\Models\Owner;
 
 class DoctorController extends Controller
 {
@@ -70,9 +71,10 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show(Doctor $doctor, Owner $owner)
     {
-        //
+        return view('doctor.show', ['doctor' => $doctor, 'owner' => $owner]);
+        // return view('doctor.show', ['doctor' => $doctor]);
     }
 
     /**

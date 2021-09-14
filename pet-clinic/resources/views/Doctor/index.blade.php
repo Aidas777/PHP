@@ -25,15 +25,18 @@
                           </div>
                       </span>
 
-                      <div class="btns">
-                      <div>
-                          <a href="{{route('doctor.edit',[$doctor])}}" class="btn edit">Edit</a>
-                      </div>
-                          <form method="POST" action="{{route('doctor.destroy', $doctor)}}">
-                              @csrf
-                              <button type="submit" class="btn danger">Delete</button>
-                          </form>
-                      </div>
+                        <div class="btns-3">
+
+                                <a href="{{route('doctor.edit',[$doctor])}}" class="btn edit">Edit</a>
+
+                                <a href="{{route('doctor.show',[$doctor])}}" class="btn show">Show</a>
+
+                            <form method="POST" action="{{route('doctor.destroy', $doctor)}}">
+                                @csrf
+                                <button type="submit" class="btn danger">Delete</button>
+                            </form>
+                            
+                        </div>
                     </li>
                     @endforeach
                 </ul>

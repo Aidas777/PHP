@@ -24,9 +24,9 @@
                                 <a href="{{route('owner.edit',[$owner])}}" class="btn edit">Edit</a>
                             </div>
 
-                            <form method="POST" action="{{route('owner.destroy', [$owner])}}">
-                            @csrf
-                            <button type="submit" class="btn danger">Delete</button>
+                                <form method="POST" action="{{route('owner.destroy', [$owner])}}">
+                                @csrf
+                                <button type="submit" class="btn danger">Delete</button>
                             </form>
                         </div>
                     </li>

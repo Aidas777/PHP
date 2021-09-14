@@ -62,20 +62,61 @@ body {
 }
 
 .one-ownerform-data {
-    width: 66.6%;
+    width: 60%;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 3%;
 }
 
+.client-board {
+    width: 100%;
+    display: flex;
+    // border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(235, 252, 235);
+}
+.board-first {
+    width: 60%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+.board-second {
+    width: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0 5px 5px 0;
+    // border-left: none;
+}
+
+.board-col-name {
+    text-align: center;
+    font-weight: 700;
+    padding: 5px;
+    color: rgb(98, 116, 84);
+    
+}
+
+.board-data {
+    font-size: 14px;
+    padding: 7px;
+    text-align: center;
+}
+
 .little-data {
     width: 40%;
-    min-width: 200px;
+    min-width: 180px;
     margin-top: 3px;
     display: flex;
     float: inline-end;
     justify-content: center;
     font-style: italic;
+}
+
+.little-txt {
+    margin: 7px;
+    text-align: center;
 }
 
 .btn.confirm {
@@ -104,6 +145,12 @@ body {
     padding-right: 30px;
 }
 
+.btn.show {
+    background-color: rgb(231, 252, 198);
+    color: rgb(31, 61, 51);
+    font-size: 16px;
+}
+
 // .btn {
 //     margin-left: 15%;
 //     margin-right: 15%;
@@ -112,13 +159,25 @@ body {
 .btns {
     display: flex;
     justify-content: center;
-    width: 30%;
+    width: 27%;
     margin-top: auto;
     margin-bottom: auto;
     .btn {
-    margin-left: 15%;
-    margin-right: 15%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
+
+.btns-3 {
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    margin-top: auto;
+    margin-bottom: auto;
+    .btn {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
 .btn-center {
@@ -150,4 +209,9 @@ img {
 
 .ital {
     font-style: italic;
+}
+
+.alert-info {
+    background-color: rgb(255, 214, 214);
+    color: rgb(145, 22, 22);
 }
