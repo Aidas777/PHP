@@ -24,7 +24,7 @@
                         <small class="form-text text-muted">Outfit size numerical.</small>
                     </div>
                     <div class="form-group">
-                        <label>About</label>
+                        <label>Aboutas</label>
                         <textarea class="form-control" name="outfit_about">{{old('outfit_about')}}</textarea>
                         <small class="form-text text-muted">About outfit.</small>
                     </div>

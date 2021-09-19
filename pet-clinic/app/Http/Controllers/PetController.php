@@ -16,16 +16,95 @@ class PetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $pets = Pet::all();
-        $owners = Owner::all();
-        // $owners = Owner::all();
-        return view('pet.index', ['pets' => $pets]);
+    // public function index()
+    // {
+    //     $pets = Pet::all();
+    //     $owners = Owner::all();
+    //     return view('pet.index', ['pets' => $pets]);
 
-        // $owners = Owner::all();
-        // return view('owner.index', ['owners' => $owners]);
+    // }
+
+    public function index(Request $request) {
+
+    $pets = Pet::orderBy('name')->get();
+    $doctors = Doctor::orderBy('name')->get();
+
+        if ($request->sort) {
+            if ('bdate' == $request->sort && 'asc' == $request->sort_dir) {
+                $pets = Pet::orderBy('birth_date')->get();
+            }
+            else if ('bdate' == $request->sort && 'desc' == $request->sort_dir) {
+                $pets = Pet::orderBy('birth_date', 'desc')->get();
+            }
+            else if ('species' == $request->sort && 'asc' == $request->sort_dir) {
+                $pets = Pet::orderBy('species')->get();
+            }
+            else if ('species' == $request->sort && 'desc' == $request->sort_dir) {
+                $pets = Pet::orderBy('species', 'desc')->get();
+            }
+            // else if ('size' == $request->sort && 'asc' == $request->sort_dir) {
+            //     $pets = Pet::orderBy('size')->get();
+            // }
+            // else if ('size' == $request->sort && 'desc' == $request->sort_dir) {
+            //     $pets = Pet::orderBy('size', 'desc')->get();
+            // }
+            else {
+                $pets = Pet::all();
+            }
+        }
+
+
+// ----------------------------
+
+
+
+        else if ($request->filter && 'doctor' == $request->filter) {
+            $pets = Pet::where('doctor_id', $request->doctor_id)->get();
+        }
+        else if ($request->search && 'all' == $request->search) {
+
+        $words = explode(' ', $request->s);
+
+        dd($words);
+
+        if (count($words) == 1) {
+            $pets = Pet::where('color', 'like', '%'.$request->s.'%')->
+            orWhere('birth_date', 'like', '%'.$request->s.'%')->
+            orWhere('species', 'like', '%'.$request->s.'%')->
+            get();
+        }
+        else {
+            $pets = Pet::where(function($query) use ($words) {
+                $query->orWhere('color', 'like', '%'.$words[0].'%')
+                ->orWhere('birth_date', 'like', '%'.$words[0].'%')
+                ->orWhere('species', 'like', '%'.$words[0].'%');
+            })
+            ->where(function($query) use ($words) {
+                $query->orWhere('color', 'like', '%'.$words[1].'%')
+                ->orWhere('birth_date', 'like', '%'.$words[1].'%')
+                ->orWhere('species', 'like', '%'.$words[1].'%');
+            })->get();
+        }
+
+
+
+        }
+        else {
+            // nieko nesortinam
+            $pets = Pet::all();
+        }
+        
+
+        return view('pet.index', [
+            'pets' => $pets,
+            'sortDirection' => $request->sort_dir ?? 'asc',
+            'doctors' => $doctors,
+            'doctor_id' => $request->doctors_id ?? '0',
+            's' => $request->s ?? ''
+        ]);
     }
+
+    // ------------------------------
 
     /**
      * Show the form for creating a new resource.
