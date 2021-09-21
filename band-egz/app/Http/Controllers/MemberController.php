@@ -9,6 +9,8 @@ use Validator;
 
 class MemberController extends Controller
 {
+    const RESULTS_IN_PAGE = 9;
+
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +22,62 @@ class MemberController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        // $members = Member::all();
-        $members = Member::all()->sortBy('surname');
-        $reservoirs = Reservoir::all();
-        return view('member.index', ['members' => $members, 'reservoirs' => $reservoirs]);
+        // $members = Member::paginate(self::RESULTS_IN_PAGE)->withQueryString()->sortBy('surname');
+        $members = Member::orderBy('surname')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        $reservoirs = Reservoir::orderBy('title')->paginate(100)->withQueryString();
+        // return view('member.index', ['members' => $members, 'reservoirs' => $reservoirs]);
+
+        // $members = Member::orderBy('name')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        // $doctors = Doctor::orderBy('name')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+
+        if ($request->sort) {
+            if ('name' == $request->sort && 'asc' == $request->sort_dir) {
+                $members = Member::orderBy('name')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            }
+            else if ('name' == $request->sort && 'desc' == $request->sort_dir) {
+                $members = Member::orderBy('name', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            }
+            else if ('experience' == $request->sort && 'asc' == $request->sort_dir) {
+                $members = Member::orderBy('experience')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+                // dd($request->sort_dir);
+            }
+            else if ('experience' == $request->sort && 'desc' == $request->sort_dir) {
+                $members = Member::orderBy('experience', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            }
+            // else if ('size' == $request->sort && 'asc' == $request->sort_dir) {
+            //     $members = Member::orderBy('size')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            // }
+            // else if ('size' == $request->sort && 'desc' == $request->sort_dir) {
+            //     $members = Member::orderBy('size', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            // }
+            else {
+                $members = Member::paginate(self::RESULTS_IN_PAGE)->withQueryString();
+            }
+        }
+
+        else if ($request->filter && 'reservoir' == $request->filter) {
+            $members = Member::where('reservoir_id', $request->reservoir_id)->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        }
+        else if ($request->search && 'all' == $request->search) {
+
+        }
+        else {
+            // nieko nesortinam
+            $members = Member::paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        }
+        
+
+        return view('member.index', [
+            'members' => $members,
+            'sortDirection' => $request->sort_dir ?? 'asc',
+            'reservoirs' => $reservoirs,
+            'reservoir_id' => $request->reservoir_id ?? '0',
+            's' => $request->s ?? ''
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -37,9 +88,9 @@ class MemberController extends Controller
     {
         // return view('member.create');
 
-        // $reservoirs = Reservoir::all();
-        $reservoirs = Reservoir::all()->sortBy('title');
-        $members = Member::all()->sortBy('surname');
+        // $reservoirs = Reservoir::paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        $reservoirs = Reservoir::paginate(self::RESULTS_IN_PAGE)->withQueryString()->sortBy('title');
+        $members = Member::paginate(self::RESULTS_IN_PAGE)->withQueryString()->sortBy('surname');
         return view('member.create', ['reservoirs' => $reservoirs, 'members' => $members]);
     }
 
@@ -63,7 +114,8 @@ class MemberController extends Controller
            'member_surname' => ['required', 'min:3', 'max:150'],
            'member_live' => ['required', 'min:3', 'max:50'],
            'member_experience' => ['required', 'integer'],
-           'member_registered' => ['required', 'integer'],
+        //    'member_registered' => ['required', 'integer'],
+            'member_registered' => 'lte:member_experience',
            'reservoir_id' => ['required', 'min:1']
        ]
 
@@ -97,7 +149,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('member.show', ['member' => $member]);
     }
 
     /**
@@ -108,8 +160,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        // $reservoirs = Reservoir::all();
-        $reservoirs = Reservoir::orderBy('area')->get();
+        // $reservoirs = Reservoir::paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        $reservoirs = Reservoir::orderBy('title')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
         return view('member.edit', ['member' => $member, 'reservoirs' => $reservoirs]);
     }
 
@@ -128,7 +180,7 @@ class MemberController extends Controller
             'member_surname' => ['required', 'min:3', 'max:150'],
             'member_live' => ['required', 'min:3', 'max:50'],
             'member_experience' => ['required', 'integer'],
-            'member_registered' => ['required', 'integer'],
+            'member_registered' => 'lte:member_experience',
             'reservoir_id' => ['required', 'min:1']
         ]
  

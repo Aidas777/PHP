@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservoir;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Validator;
 
 class ReservoirController extends Controller
 {
+    const RESULTS_IN_PAGE = 5;
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +21,13 @@ class ReservoirController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
         // $reservoirs = Reservoir::all();
-        $reservoirs = Reservoir::all()->sortBy('area');
+        $reservoirs = Reservoir::orderBy('area')->paginate(self::RESULTS_IN_PAGE);
+        // $members = Member::all()->sortBy('surname');
         return view('reservoir.index', ['reservoirs' => $reservoirs]);
+
     }
 
     /**

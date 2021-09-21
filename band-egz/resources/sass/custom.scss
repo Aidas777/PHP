@@ -21,6 +21,8 @@ body {
     font-style: italic;
     box-shadow: 5px 5px 10px gray;
     border-radius: 7px !important;
+    padding-top: 7px;
+    // padding-bottom: 7px;
     fieldset {
         margin: 5px;
         padding: 12px;
@@ -64,6 +66,7 @@ body {
     h3 {
         margin-top: 0;
         margin-bottom: 0;
+        margin-left: 4px;
     }
 }
 
@@ -303,8 +306,21 @@ img {
     margin-bottom: auto;
 }
 
+.paginate {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 20px;
+}
+
 .main-title {
     color: rgb(17, 59, 19) !important;
+}
+
+@media all and (max-width: 880px) {
+    .main-title {
+        font-size: 14px;
+    }
 }
 
 

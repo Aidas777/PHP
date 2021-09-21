@@ -8,6 +8,7 @@
                <div class="card-header">Reservoirs List</div>
 
                <div class="card-body">
+                <div class="paginate">{{$reservoirs->links()}}</div>
                  {{--  --}}
                     <ul class="petforms-all">
                         @foreach ($reservoirs as $reservoir)
@@ -15,7 +16,7 @@
                             {{-- {{dd($reservoir->getMember[0])}} --}}
                             <span class="one-form-data">
                                 <div class="item-name"><b>{{$reservoir->title}} </b><i><small> Area: {{$reservoir->area}}</small></i></div>
-                                <div class="little-txt txtblue"><i><b>Set for: </b>
+                                <div class="little-txt txtblue"><i><b>Set to: </b>
                                     &nbsp {{$reservoir->getMember[0]->name ?? ''}} {{$reservoir->getMember[0]->surname ?? 'not set'}}</i>
                                </div>
                             </span>
@@ -35,6 +36,7 @@
                         </li>
                             @endforeach
                     </ul>
+                    <div class="paginate">{{$reservoirs->links()}}</div>
                  {{--  --}}
                </div>
            </div>

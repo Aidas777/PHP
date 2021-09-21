@@ -10022,6 +10022,7 @@ body {
   font-style: italic;
   box-shadow: 5px 5px 10px gray;
   border-radius: 7px !important;
+  padding-top: 7px;
 }
 .card-header fieldset {
   margin: 5px;
@@ -10063,6 +10064,7 @@ body {
 .card-header h3 {
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: 4px;
 }
 
 .card-top-actions {
@@ -10287,6 +10289,18 @@ img {
   margin-bottom: auto;
 }
 
+.paginate {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .main-title {
   color: #113b13 !important;
+}
+
+@media all and (max-width: 880px) {
+  .main-title {
+    font-size: 14px;
+  }
 }
