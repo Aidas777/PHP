@@ -25,20 +25,34 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $reservoirsCount = 50;
-        $reservoirsMass = ['Dange', 'Nemunas', 'Šušvė', 'Šventoji','Baltijos jūra',
-            'Širvėnos ežeras', 'Šuoja', 'Erla', 'Nevėžis', 'Neris', 'Žižma'];
+        $reservoirsMass = ['Dange'=> (rand(1,100) .'.'.rand(100, 999)), 'Nemunas'=> (rand(1,100) .'.'.rand(100, 999)),
+            'Šušvė'=> (rand(1,100) .'.'.rand(100, 999)), 'Šventoji'=> (rand(1,100) .'.'.rand(100, 999)),
+            'Baltijos jūra'=> (rand(1,100) .'.'.rand(100, 999)), 'Širvėnos ežeras'=> (rand(1,100) .'.'.rand(100, 999)),
+            'Šuoja'=> (rand(1,100) .'.'.rand(100, 999)), 'Erla'=> (rand(1,100) .'.'.rand(100, 999)),
+            'Nevėžis'=> (rand(1,100) .'.'.rand(100, 999)), 'Neris'=> (rand(1,100) .'.'.rand(100, 999)),
+            'Žižma'=> (rand(1,100) .'.'.rand(100, 999))];
 
-        foreach(range(1, $reservoirsCount) as $r) {
-            $reserv = $reservoirsMass[rand(0, count($reservoirsMass)-1)];
-            $are=rand(1,100) .'.'.rand(100, 999);
+        // $reservoirsMass = ['Dange'=> 2, 'Nemunas'=> 6,
+        // 'Šušvė'=> 8];
+        $arrkeys = array_keys($reservoirsMass);
+
+        foreach(range(1, $reservoirsCount) as $n) {
+            // var_dump($n);
+            // $reserv = $reservoirsMass[rand(0, count($reservoirsMass)-1)];
+            $arrvals = $reservoirsMass[$arrkeys[rand(0, count($reservoirsMass)-1)]];
+            $arrkey = $arrkeys[rand(0, count($reservoirsMass)-1)];
+            $arrval = $reservoirsMass[$arrkey];
+            $are = $arrvals;
+           
+            // $are=rand(1,100) .'.'.rand(100, 999);
             // $are=10;
             DB::table('reservoirs')->insert([
 
-                'title' => $reserv,
+                'title' => $arrkey,
                 // 'area' => $faker->lastName(),
 
                 // 'title' => 'Minija',
-                'area' => $are,
+                'area' => $arrval,
                 'about' => $faker->realText(50)
             ]);
         }
