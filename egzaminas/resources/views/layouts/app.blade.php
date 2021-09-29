@@ -7,10 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Klientų kontaktinės informacijos sistema')</title>
+    
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,8 +29,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand main-title" href="{{ url('/') }}">
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    Klientų kontaktinės informacijos sistema
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -52,6 +59,34 @@
                                 </li>
                             @endif
                         @else
+                        {{--  --}}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Companies
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('company.index') }}">
+                                    Companies List
+                                </a>
+                                <a class="dropdown-item" href="{{ route('company.create') }}">
+                                    New Company
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Customers
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('customer.index') }}">
+                                    Customers List
+                                </a>
+                                    <a class="dropdown-item" href="{{ route('customer.create') }}">
+                                    New Customer
+                                </a>
+                            </div>
+                        </li>
+                        {{--  --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -76,6 +111,40 @@
         </nav>
 
         <main class="py-4">
+            {{--  --}}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        @if ($errors->any())
+                        <div class="alert">
+                            <ul class="list-group">
+                                @foreach ($errors->all() as $error)
+                                    <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        @if(session()->has('success_message'))
+                            <div class="alert alert-success" role="alert">
+                                {{session()->get('success_message')}}
+                            </div>
+                        @endif
+                       
+                        @if(session()->has('info_message'))
+                            <div class="alert alert-info" role="alert">
+                                {{session()->get('info_message')}}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            {{--  --}}
             @yield('content')
         </main>
     </div>

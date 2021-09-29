@@ -26,36 +26,30 @@ class DatabaseSeeder extends Seeder
 
 
 
-        // $reservoirsCount = 30;
-        // $reservoirsMass = ['Dange', 'Nemunas', 'Šušvė', 'Šventoji','Baltijos jūra',
+        $companysCount = 100;
+        // $companysMass = ['Dange', 'Nemunas', 'Šušvė', 'Šventoji','Baltijos jūra',
         //     'Širvėnos ežeras', 'Šuoja', 'Erla', 'Nevėžis', 'Neris', 'Žižma'];
 
-        // foreach(range(1, $reservoirsCount) as $r) {
-        //     $reserv = $reservoirsMass[rand(0, count($reservoirsMass)-1)];
-        //     $are=rand(1,100) .'.'.rand(100, 999);
-        //     DB::table('reservoirs')->insert([
+        foreach(range(1, $companysCount) as $r) {
+            // $reserv = $companysMass[rand(0, count($companysMass)-1)];
+            DB::table('companies')->insert([
 
-        //         'title' => $reserv,
-        //         // 'area' => $faker->lastName(),
+                'name' => substr($faker->company, 0, 20),
+                'address' => substr($faker->address,0, 150)
+                // 'about' => $faker->realText(50)
+            ]);
+        }
 
-        //         // 'title' => 'Minija',
-        //         'area' => $are,
-        //         'about' => $faker->realText(50)
-        //     ]);
-        // }
+        foreach(range(1, $companysCount) as $r) {
+            DB::table('customers')->insert([
 
-        // foreach(range(1, $reservoirsCount) as $r) {
-        //     $exper = rand(1, 20);
-        //     DB::table('members')->insert([
-
-        //         'name' => $faker->firstName,
-        //         'surname' => $faker->lastName,
-        //         'live' => $faker->city(),
-        //         'experience' => $exper,
-        //         'registered' => rand(0, $exper),
-
-        //         'reservoir_id' => rand(1, $reservoirsCount)
-        //     ]);
-        // }
+                'name' => $faker->firstName,
+                'surname' => $faker->lastName,
+                'phone' =>  '+37068'.rand(0, 9). rand(10000, 99999),
+                'email' => $faker->email,
+                'comment' => $faker->realText(30),
+                'company_id' => rand(1, $companysCount)
+            ]);
+        }
     }
 }

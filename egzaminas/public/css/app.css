@@ -10135,6 +10135,12 @@ body {
   margin-bottom: auto;
 }
 
+.one-form-data-23 {
+  width: 23%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .client-board {
   width: 100%;
   display: flex;
@@ -10227,7 +10233,7 @@ body {
 .btns {
   display: flex;
   justify-content: center;
-  width: 27%;
+  width: 25%;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -10305,6 +10311,10 @@ img {
 
 .main-title {
   color: #113b13 !important;
+}
+
+.short20 {
+  width: 30%;
 }
 
 @media all and (max-width: 1190px) {
