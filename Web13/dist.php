@@ -9,7 +9,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     request($from, $to);
     
 
-    header('Location: http://localhost/Lape/13/dist.php');
+    header('Location: http://localhost/php/Web13/dist.php');
     die;
 }
 
@@ -72,7 +72,7 @@ unset($_SESSION['dist'], $_SESSION['from'], $_SESSION['to'], $_SESSION['img'], $
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <form action="http://localhost/Lape/13/dist.php" method="post" class="m-4">
+                <form action="http://localhost/php/Web13/dist.php" method="post" class="m-4">
                     <div class="form-group">
                         <label>From</label>
                         <input type="text" class="form-control" placeholder="From" name="from">
