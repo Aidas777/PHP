@@ -50,11 +50,6 @@ class PlanB extends PlanController
             }
         }
 
-        // if ($required_eur == self::$sortedSmsListArr[0]['income'])
-        // {
-        //     PlanController::$outputPlanForClient[] = self::$sortedSmsListArr[0]['price'];
-        // }
-        
         // RETURNING PLAN B TO PlanController
         PlanController::$outputPlanForClientB = self::$outputPlanForClient;
         PlanController::$outputPlanByIncomeB = self::$outputPlanByIncome;

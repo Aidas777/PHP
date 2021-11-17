@@ -3,10 +3,13 @@
     "description": "Fantastine mokejimu sms-ais apskaitos programa :)",
     "type": "no",
     "license": "MIT",
-    "require": {},
     "autoload": {
         "psr-4": {
-            "AidasM\\App\\": "app/"
+            "AidasM\\App\\": "app/",
+            "AidasM\\tests\\": "tests/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

@@ -18,9 +18,10 @@ class PlanController extends InFile
     protected static $outputPlanByIncomeB = [];
 
     protected static $chosenPlan ='';
+    protected static $planSelectionDescription = '';
 
         // START (CONTROLLER)
-        public static function Start($argv)
+        public static function start($argv)
         {
             self::countController($argv);
         }

@@ -7,10 +7,4 @@ use AidasM\App\InFile;
 use AidasM\App\PlanController;
 
 // OPERATION START
-PlanController::Start($argv);
-
-
-
-
-
-
+PlanController::start($argv);
