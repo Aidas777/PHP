@@ -1,0 +1,4 @@
+Programa "paleidžiama" public aplanke, kaip nurodyta užduotyje, nurodant script.php ir failą argumentą (pvz: php script.php input.json). Argumentu gali būti bet koks failas.
+
+Testas vykdomas SmsPay aplanke su komanda: "./vendor/bin/phpunit" (su tašku priekyje)
+Testas atliekamas (kadangi užduoty kaip ir nėra tiksliau nurodyta) šiuo atveju su failu input.json (jis yra public aplanke) automatiškai.
